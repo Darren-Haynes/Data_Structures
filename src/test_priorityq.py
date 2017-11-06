@@ -34,3 +34,19 @@ def test_q_instantiates_with_lowest_as_0(empty_q):
     assert empty_q._lowest == 0
 
 
+NOT_INTS = [
+    ('a', 1.2),
+    ('a', 'a'),
+    ('a', (0, 2)),
+    ('a', []),
+    ('a', {}),
+    ('a', False),
+]
+
+
+@pytest.mark.parametrize('val, priority', NOT_INTS)
+def test_insert_is_passed_valid_priority(val, priority, empty_q):
+    """Raise TypeError if priority passed as param is not integer."""
+    with pytest.raises(TypeError):
+        empty_q(val, priority)
+
