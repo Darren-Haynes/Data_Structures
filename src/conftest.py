@@ -3,7 +3,7 @@ import pytest
 
 
 @pytest.fixture
-def eh():
+def empty_q():
     """Create empty BinaryHeap."""
-    from binary_heap import BinaryHeap
-    return BinaryHeap()
+    from priorityq import PriorityQ
+    return PriorityQ()
