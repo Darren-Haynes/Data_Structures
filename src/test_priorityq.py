@@ -10,29 +10,15 @@ def test_q_instantiates_a_dict(empty_q):
     assert type(empty_q.queue) == dict
 
 
-def test_q_insantiates_dict_of_length_1(empty_q):
-    """Instantaited dict should contain one key:value pair. so length = 1."""
-    assert len(empty_q.queue) == 1
-
-
-def test_q_instantiates_with_0_as_first_priority(empty_q):
-    """Q should have '0' as its first priority."""
-    assert 0 in empty_q.queue
-
-
-def test_q_instantiates_with_empty_list(empty_q):
-    """Test Q instantiates with 0 as key and empty list as value."""
-    assert empty_q.queue[0] == []
+def test_q_insantiates_empty_dict(empty_q):
+    """Instantaited dict should contain no keys."""
+    assert len(empty_q.queue) == 0
 
 
 def test_q_instantiates_with_highest_as_0(empty_q):
     """Q should instantiate with '_highest' values of zeros."""
     assert empty_q._highest == 0
 
-
-def test_q_instantiates_with_lowest_as_zeroes(empty_q):
-    """Q should instantiate with '_lowest' values of zeros."""
-    assert empty_q._lowest == 0
 
 NOT_INTS = [
     ('a', 1.2),
@@ -53,7 +39,7 @@ def test_insert_is_passed_valid_priority(val, priority, empty_q):
 
 def test_priority_param_is_int_returns_true(empty_q):
     """If int passed as priority param function returns true."""
-    assert empty_q.insert('a', 1) == True
+    assert not empty_q.insert('a', 1)
 
 
 def test_priority_as_int_not_raise_error(empty_q):
@@ -115,14 +101,24 @@ def test_highest_priority_is_highest_priority(empty_q):
     assert empty_q._highest == max(empty_q.queue, key=int)
 
 
-def test_lowest_priority_is_lowest_priority(empty_q):
-    """Check that 'self_lowest' is the lowest priority in dict."""
-    for i in range(20):
-        empty_q.insert(i, randint(-1000, 1000))
-    assert empty_q._lowest == min(empty_q.queue, key=int)
-
-
 def test_pop_empty_q_returns_message(empty_q):
     """Empty Q should return appropritate message if pop attempted."""
     assert empty_q.pop() == "Empty queue, nothing to pop"
+
+
+def test_pop_entire_q_returns_correct_values(empty_q):
+    """Test q with 100 random entries pops all 100 correctly."""
+    from random import randint, choice
+    import string
+    for _ in range(100):
+        empty_q.insert(choice(string.ascii_letters), randint(-20, 20))
+
+    while empty_q.queue:
+        p = max(empty_q.queue, key=int)
+        all_values = empty_q.queue[p][:]
+        temp = []
+        for i in range(len(empty_q.queue[p])):
+            temp.append(empty_q.pop())
+        assert all_values == temp
+    assert not empty_q.queue
 
