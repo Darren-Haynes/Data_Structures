@@ -122,3 +122,15 @@ def test_pop_entire_q_returns_correct_values(empty_q):
         assert all_values == temp
     assert not empty_q.queue
 
+
+def test_peek_empty_q_returns_message(empty_q):
+    """Peek empty q prints empty q message."""
+    assert empty_q.peek() == "Empty queue, nothing to see."
+
+
+def test_peek_sees_highest_value_in_q(empty_q):
+    """Peek should return representation of highest priotity value."""
+    empty_q.insert('a', -20)
+    empty_q.insert('b', 0)
+    empty_q.insert('c', 20)
+    assert empty_q.peek() == 'c'
