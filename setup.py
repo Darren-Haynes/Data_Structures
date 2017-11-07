@@ -1,10 +1,10 @@
 from setuptools import setup
 
 setup(
-    name='Deque',
-    description='Create a deque data structure',
+    name='Priority Q',
+    description='Create a Priority queue data structure',
     package_dir={'': 'src'},
-    author=' Kevin Robinson & Darren Haynes',
+    author='Darren Haynes',
     author_email='dummy-email@zoho.com',
     py_modules=[],
     install_requires=[],
@@ -14,7 +14,7 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'deque=deque:main'
+            'Q=priorityq:main'
         }
     }
 )
