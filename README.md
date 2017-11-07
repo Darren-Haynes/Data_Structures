@@ -1,26 +1,39 @@
 # Data Structures
 
-### Binary heap implementation for the Codefellows Python 401 Course
+### Priority Queue implementation for the Codefellows Python 401 Course
 
 #### Implentation
-The python list is used to store the values of the binary heap. Index 0 of the list is reserved for the python "None" object. This provides 2 advantages:
-- 1: Indexing of the the first value in the heap is at index 1 `self.heap[1]`. This makes for some easier math and in my opinion - code that is easier to read.
-- 2: When pushing to the heap, if a value bubbles all the way to the top of the heap, it 'bumps' into "None" and sees that there are no more parents to compare and swap with. The caveat to this, however, is that "None" in python 3 functions a little differently to "None" in python 2. You cannot compare a number with "None" in python 3, it will raise a TypeError. In python 2 you CAN compare a number with None, and regardless whether that number is postive, 0 or negative it will always be greater than "None". This left me with an hour of debugging to figure out why some of the tests were failing in python 2. I won't forget this python 2 and Python 3 difference again any time soon.
+A python dictionary is used to store priorities and their values. The values take the form of a python list.  For example a Priority Queue with 3 priorities of `-2`, `0` and `4` that contain some values would look like this:
+```
+{
+    -2: ['a', 'b', 'c'],
+    0: ['bing', 'bang'],
+    4: [1001]
+}
+```
+#### A few things to note:
+- If there are no priorities the dictionary will be empty.
+- A priority cannot exist if there are no values. Thus if a priority has a single value, and that value is removed (popped), then the priority will be deleted.
 
-#### Big 0
+#### Yo Big 0
 
-- ***__Instantiating an empty binary heap__****** = O(1)
-  It is constant time.
+- ***__Instantiating an empty Priority Queue__ = O(1)
+  It is constant time. An empty dict is created and a variable `self_highest`
+  is set to `False`. All constant time operations
 
-- __Instantiating a list with an iterable__ = O(n)
-  The `n` refers to how many numbers are in the iterable.
 
-- __Push()__ = O(log(n))
-  Best case is `O(1)` if there are no values in the heap yet. It's constant time
-  since it does not have to check itself against a parent value. It is simply
-  place into the list. Worst case is `O(log(n))`. Each time the child value
-  checks with the parent value and needs to swap it cuts the amount of
-  traversal through the heap in half.
+- __Insert()__ = O(1)
+  A dictionary key: value pair is either created or an existing key's value is
+  updated. The `self_highest` variable is simply set to the new priority if the
+  new priority is greater than the present highest priority. These are all
+  constant time operations.
 
-- __Pop()__ = O(log(n))
-  Essentially this is push in reverse and is this `O(log(n))`
+- __Pop()__ = O(n)
+  The python built-in `max` method is used to get the highest priority from the
+  dictionary. This I believe is an `O(n)` operation, since it has to loop the
+  dictionary keys in some way to find the priority key that is the greatest
+  number.
+
+- __Peek()__ = O(1)
+  The dictionary get method is used to find the priority key we are looking
+  for - this is an O(1) operation.
