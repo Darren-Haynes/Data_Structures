@@ -1,11 +1,11 @@
-"""."""
+"""Implement a Priority Queue."""
 
 
 class PriorityQ(object):
-    """."""
+    """Priority Queue Class."""
 
     def __init__(self):
-        """."""
+        """Instantiate an empty queue."""
         self.queue = {}
         self._highest = False
 
@@ -24,7 +24,7 @@ class PriorityQ(object):
                 self._highest = priority
 
     def pop(self):
-        """."""
+        """Pop highest priority value from the q."""
         if not self.queue:
             return "Empty queue, nothing to pop"
 
@@ -36,5 +36,11 @@ class PriorityQ(object):
             except ValueError:
                 self._highest = 0
         return popped
+
+    def peek(self):
+        """See what the highest priority value is in the q."""
+        if not self.queue:
+            return "Empty queue, nothing to see."
+        return self.queue[self._highest][0]
 
 
