@@ -7,8 +7,8 @@ class PriorityQ(object):
     def __init__(self):
         """."""
         self.queue = {0: []}
-        self._highest2 = [0, 0]
-        self._lowest2 = [0, 0]
+        self._highest = 0
+        self._lowest = 0
 
     def insert(self, val, priority=0):
         """."""
@@ -19,13 +19,22 @@ class PriorityQ(object):
             self.queue[priority].append(val)
         else:
             self.queue[priority] = [val]
-            if priority > self._highest2[1]:
-                self._highest2[0], self._highest2[1] = self._highest2[1], priority
-            if priority < self._lowest2[1]:
-                self._lowest2[0], self._lowest2[1] = self._lowest2[1], priority
+            if priority > self._highest:
+                self._highest = priority
+            if priority < self._lowest:
+                self._lowest = priority
         return True
 
     def pop(self):
         """."""
-        popped = self.queue[self._highest][-1].pop(0)
+        try:
+            popped = self.queue[self._highest].pop(0)
+        except IndexError:
+            return "Empty queue, nothing to pop"
+
+        if not self.queue[self._highest] and self._highest:
+            del self.queue[self._highest]
+            self._highest = max(self.queue, key=int)
+        return popped
+
 

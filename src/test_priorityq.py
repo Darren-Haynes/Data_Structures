@@ -27,13 +27,12 @@ def test_q_instantiates_with_empty_list(empty_q):
 
 def test_q_instantiates_with_highest_as_0(empty_q):
     """Q should instantiate with '_highest' values of zeros."""
-    assert empty_q._highest2 == [0, 0]
+    assert empty_q._highest == 0
 
 
 def test_q_instantiates_with_lowest_as_zeroes(empty_q):
     """Q should instantiate with '_lowest' values of zeros."""
-    assert empty_q._lowest2 == [0, 0]
-
+    assert empty_q._lowest == 0
 
 NOT_INTS = [
     ('a', 1.2),
@@ -113,14 +112,17 @@ def test_highest_priority_is_highest_priority(empty_q):
     """Check that 'self_lowest' is the lowest priority in dict."""
     for i in range(20):
         empty_q.insert(i, randint(-1000, 1000))
-    assert empty_q._highest2[1] == max(empty_q.queue, key=int)
+    assert empty_q._highest == max(empty_q.queue, key=int)
 
 
 def test_lowest_priority_is_lowest_priority(empty_q):
     """Check that 'self_lowest' is the lowest priority in dict."""
     for i in range(20):
         empty_q.insert(i, randint(-1000, 1000))
-    assert empty_q._lowest2[1] == min(empty_q.queue, key=int)
+    assert empty_q._lowest == min(empty_q.queue, key=int)
 
 
-# def t
+def test_pop_empty_q_returns_message(empty_q):
+    """Empty Q should return appropritate message if pop attempted."""
+    assert empty_q.pop() == "Empty queue, nothing to pop"
+
