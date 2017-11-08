@@ -1,39 +1,63 @@
 # Data Structures
 
-### Priority Queue implementation for the Codefellows Python 401 Course
+### Simple unweighted directed graph implementation for the Codefellows Python 401 Course
 
 #### Implentation
-A python dictionary is used to store priorities and their values. The values take the form of a python list.  For example a Priority Queue with 3 priorities of `-2`, `0` and `4` that contain some values would look like this:
+A python dictionary is used to store the nodes. The key is name of the node,
+the value is the node it points to. Example of the graph data:
 ```
 {
-    -2: ['a', 'b', 'c'],
-    0: ['bing', 'bang'],
-    4: [1001]
+    'A': ['B', 'C', 'D'],
+    B: ['C'],
+    C: ['D', 'E'].
+    D: [],
+    E: []
 }
 ```
 #### A few things to note:
-- If there are no priorities the dictionary will be empty.
-- A priority cannot exist if there are no values. Thus if a priority has a single value, and that value is removed (popped), then the priority will be deleted.
+- 2 nodes never point back to each other. But one node can point to multiple
+  nodes.
+- A node can exist without pointing to another node, or having another node
+  point to it. It can stand alone.
 
 #### Yo Big 0
 
-- ***__Instantiating an empty Priority Queue__ = O(1)
-  It is constant time. An empty dict is created and a variable `self_highest`
-  is set to `False`. All constant time operations
+- ***__Instantiating an empty graph__ = O(1)
+  It is constant time. An emtpy dict is created, that's it.
 
 
-- __Insert()__ = O(1)
-  A dictionary key: value pair is either created or an existing key's value is
-  updated. The `self_highest` variable is simply set to the new priority if the
-  new priority is greater than the present highest priority. These are all
-  constant time operations.
+- __add_node()__ = O(1)
+ This method just uses the dict setdefault method.
 
-- __Pop()__ = O(n)
-  The python built-in `max` method is used to get the highest priority from the
-  dictionary. This I believe is an `O(n)` operation, since it has to loop the
-  dictionary keys in some way to find the priority key that is the greatest
-  number.
 
-- __Peek()__ = O(1)
-  The dictionary get method is used to find the priority key we are looking
-  for - this is an O(1) operation.
+- __add_edge()__ = O(n)
+  There are several things happening in this method and they are all `O(1)`
+  except for the python list built in method `is item in list` which is `O(n)`
+
+- __nodes()__ = O(n)
+  The method turns the keys of a dict into a list.
+
+
+- __edges()__ = O(n^2)
+  There is a double for loop in this method.
+
+
+- __del_node()__ = O(1)
+  This method is very efficient. It uses to dict methods `if key in dict` and
+  `del key in dict`. Both these dict methods are `O(1)`.
+
+
+- __del_edge()__ = O(n)
+  Two list methods are utilised: `value in list` and `remove`. These are both
+  `O(n)` operations. They are used independantly of each other, thus we do not
+  get `O(n^2)`.
+
+
+- __has_node()__ = O(1)
+  This method is simple and simply returns the boolean output of the dict method `key
+  in dict`.
+
+
+- __adjacent()__ = O(n)
+  The adjacent method makes use of the `value in list` method which is an
+  `O(n)` operation.
