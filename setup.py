@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='Priority Q',
-    description='Create a Priority queue data structure',
+    name='Simple graph',
+    description='Create a simple graph data structure',
     package_dir={'': 'src'},
     author='Darren Haynes',
     author_email='dummy-email@zoho.com',
@@ -14,7 +14,7 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'Q=priorityq:main'
+            'graph=simple_graph:main'
         }
     }
 )

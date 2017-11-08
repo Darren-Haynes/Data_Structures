@@ -1,0 +1,87 @@
+"""Tests for the graph, because we test all the things."""
+import pytest
+
+
+def test_graph_initiates_with_empty_dict(empty_g):
+    """Graph initiates with an empty dict: self.graph."""
+    assert empty_g.graph == {}
+
+
+def test_add_node_to_empty_graph_creates_key(empty_g):
+    """Add a node to empty graph creates key in graph."""
+    empty_g.add_node('A')
+    assert 'A' in empty_g.graph
+
+
+def test_add_node_to_empty_graph_creates_value(empty_g):
+    """Add a node to empty graph creates dict value as empty list."""
+    empty_g.add_node('A')
+    assert empty_g.graph['A'] == []
+
+
+def test_add_same_node_to_graph_twice_does_nothing(empty_g):
+    """If node exist, add_node() should do nothing."""
+    empty_g.add_node('A')
+    empty_g.add_node('A')
+    assert 'A' in empty_g.graph
+    assert len(empty_g.graph) == 1
+
+
+def test_add_multiple_nodes_to_graph(empty_g):
+    """Test 10 nodes added to graph are all in graph."""
+    for i in range(10):
+        empty_g.add_node(i)
+    for i in range(10):
+        assert i in empty_g.graph
+
+
+def test_add_node_and_edge_to_node_without_edge(empty_g):
+    """If node without edge exists, adding node with edge adds edge."""
+    empty_g.add_node('A')
+    empty_g.add_edge('A', 'B')
+    assert empty_g.graph['A'] == ['B']
+
+
+def test_add_edge_doesnt_create_duplicate_edge(empty_g):
+    """If an edge exist for node don't add it a second time."""
+    empty_g.add_node('A')
+    empty_g.add_edge('A', 'B')
+    empty_g.add_edge('A', 'B')
+    assert empty_g.graph['A'] == ['B']
+
+
+def test_all_nodes_are_returned(empty_g):
+    """Test all nodes in the graph are actually returned."""
+    for i in range(20):
+        empty_g.add_node(i)
+    assert sorted(empty_g.nodes()) == [i for i in range(20)]
+
+
+def test_all_edges_returned_as_list(empty_g):
+    """Test that edges() method returns all edges in graph as list."""
+    from random import randint
+    edges = []
+    for i in range(100):
+        rand_edge = randint(0, 20)
+        edges.append(rand_edge)
+        rand_val = randint(0, 20)
+        empty_g.add_edge(rand_val, rand_edge)
+    assert sorted(empty_g.edges()) == list(set(edges))
+
+
+def test_del_node_deletes_the_node(empty_g):
+    """If node in graph, node should go bye bye."""
+    from random import randint
+    for i in range(20):
+        empty_g.add_node(i)
+    rand_val = randint(0, 19)
+    empty_g.del_node(rand_val)
+    assert rand_val not in empty_g.graph
+
+
+def test_del_node_raises_key_error(empty_g):
+    """If node not in graph raise key error."""
+    empty_g.add_node(1)
+    with pytest.raises(KeyError):
+        empty_g.del_node(0)
+
