@@ -62,7 +62,7 @@ class SimpleGraph(object):
 
     def neighbors(self, val):
         """Return all edges of a node."""
-        if not val in self.graph:
+        if val not in self.graph:
             raise KeyError("Node doesn't exist.")
 
         return self.graph[val]
