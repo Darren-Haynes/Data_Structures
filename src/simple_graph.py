@@ -103,20 +103,13 @@ class SimpleGraph(object):
 
         walked = []
         keep_walking = [start_val]
-        print("KEEP WALK BEFORE WHILE:", keep_walking)
         while keep_walking:
             node = keep_walking[0]
-            print("I AM NODE:", node)
             if node not in walked:
                 walked.append(node)
-                print("WALKED AFTER APPEND:", walked)
                 del keep_walking[0]
-                print("KEEP WALKING AFTER DEL:", keep_walking)
                 for edge in self.graph[node]:
-                    print(edge)
                     if edge not in walked and edge not in keep_walking:
-                        print("TRUE")
                         keep_walking.append(edge)
-                        print("KEEP WALKING AFTER APPEND EDGE:", keep_walking)
         return walked
 
