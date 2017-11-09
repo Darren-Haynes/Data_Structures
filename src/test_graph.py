@@ -64,7 +64,9 @@ def test_all_edges_returned_as_list(empty_g):
     for i in range(100):
         rand_edge = randint(0, 20)
         edges.append(rand_edge)
-        rand_val = randint(0, 20)
+        rand_val = rand_edge
+        while rand_val == rand_edge:
+            rand_val = randint(0, 20)
         empty_g.add_edge(rand_val, rand_edge)
     assert sorted(empty_g.edges()) == list(set(edges))
 
@@ -175,4 +177,3 @@ def test_adjacent_raise_keyerror_if_val2_not_in_graph(empty_g):
     empty_g.add_edge('B', 'A')
     with pytest.raises(KeyError):
         empty_g.adjacent('A', 'C')
-

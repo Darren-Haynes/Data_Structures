@@ -1,4 +1,6 @@
 """An unweighted, directed graph."""
+import random
+import string
 
 
 class SimpleGraph(object):
@@ -7,13 +9,10 @@ class SimpleGraph(object):
     def __init__(self):
         """Initiate an empty graph."""
         self.graph = {}
-        self.start_val = None
 
     def add_node(self, val):
         """Add a node to the graph."""
         self.graph.setdefault(val, [])
-        if len(self.graph) == 1:
-            self.start_val = val
 
     def add_edge(self, val, edge):
         """Add value and it's edge."""
@@ -25,9 +24,6 @@ class SimpleGraph(object):
                 self.graph[val].append(edge)
         else:
             self.graph[val] = [edge]
-
-        if len(self.graph) == 1:
-            self.start_val = val
 
     def nodes(self):
         """Return all nodes in the graph."""
@@ -47,8 +43,6 @@ class SimpleGraph(object):
         try:
             val in self.graph
             del self.graph[val]
-            if len(self.graph) == 0:
-                self.start_val == False
         except KeyError:
             raise KeyError("Node doesn't exist")
 
@@ -81,3 +75,14 @@ class SimpleGraph(object):
             raise KeyError("Node doesn't exist.")
 
         return val2 in self.graph[val1] or val1 in self.graph[val2]
+
+    def create_random_graph(self, nodes=20):
+        """Make a random graph."""
+        for i in range(nodes):
+            node = random.choice(string.ascii_uppercase[:10])
+            edge = random.choice(string.ascii_uppercase[:10])
+            self.add_edge(node, edge)
+
+    def depth_first_traversal(start_val):
+        """Return full depth first traversal path."""
+        pass
