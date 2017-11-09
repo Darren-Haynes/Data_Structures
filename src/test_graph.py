@@ -42,6 +42,12 @@ def test_add_node_and_edge_to_node_without_edge(empty_g):
     assert empty_g.graph['A'] == ['B']
 
 
+def test_add_node_creates_value_error(empty_g):
+    """If both params passed to function are the same, raise ValueError."""
+    with pytest.raises(ValueError):
+        empty_g.add_edge('A', 'A')
+
+
 def test_add_edge_doesnt_create_duplicate_edge(empty_g):
     """If an edge exist for node don't add it a second time."""
     empty_g.add_node('A')
@@ -177,3 +183,10 @@ def test_adjacent_raise_keyerror_if_val2_not_in_graph(empty_g):
     empty_g.add_edge('B', 'A')
     with pytest.raises(KeyError):
         empty_g.adjacent('A', 'C')
+
+
+def test_random_ascii_char_is_returned(empty_g):
+    """Test only upper case ascii chars between A-J are returned."""
+    import random
+    import string
+    assert empty_g.random_ascii_char() in string.ascii_uppercase[:10]
