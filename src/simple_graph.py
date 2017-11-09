@@ -16,6 +16,9 @@ class SimpleGraph(object):
 
     def add_edge(self, val, edge):
         """Add value and it's edge."""
+        if val == edge:
+            raise ValueError("Nodes cannot be self referential.")
+
         if edge not in self.graph:
             self.add_node(edge)
 
@@ -76,11 +79,18 @@ class SimpleGraph(object):
 
         return val2 in self.graph[val1] or val1 in self.graph[val2]
 
+    def random_ascii_char(self):
+        """Return random upper case ascii char between 'A' and  'J'."""
+        return random.choice(string.ascii_uppercase[:10])
+
     def create_random_graph(self, nodes=20):
         """Make a random graph."""
         for i in range(nodes):
-            node = random.choice(string.ascii_uppercase[:10])
-            edge = random.choice(string.ascii_uppercase[:10])
+            node = self.random_ascii_char()
+            edge = node
+
+            while edge == node:
+                edge = self.random_ascii_char()
             self.add_edge(node, edge)
 
     def depth_first_traversal(start_val):
