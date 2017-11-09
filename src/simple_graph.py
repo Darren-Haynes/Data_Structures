@@ -135,3 +135,26 @@ class SimpleGraph(object):
                         keep_walking.insert(0, edge)
         return walked
 
+
+if __name__ == '__main__':
+    import time
+    print("\nCOMPARE BREADTH VS DEPTH TRAVERSAL\n")
+    for i in range(5):
+        g = SimpleGraph()
+        g.create_random_graph()
+
+        t0 = time.time()
+        breadth = g.breadth_first_traversal('A')
+        t1 = time.time()
+
+        t3 = time.time()
+        depth = g.depth_first_traversal('A')
+        t4 = time.time()
+
+        print("Comparison {}.".format(i + 1))
+        print("Breadth traversal: {}".format(breadth))
+        print("Depth traversal:   {}".format(depth))
+        print("Breadth time = {}".format(t1 - t0))
+        print("Depth time =   {}\n".format(t4 - t3))
+
+
