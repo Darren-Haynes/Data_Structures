@@ -96,7 +96,7 @@ class SimpleGraph(object):
     def breadth_first_traversal(self, start_val):
         """Return full breadth first traversal path."""
         if start_val not in self.graph:
-            raise ValueError("Node doesn't exist")
+            raise KeyError("Node doesn't exist")
 
         if not self.graph[start_val]:
             return [start_val]
