@@ -93,10 +93,13 @@ class SimpleGraph(object):
                 edge = self.random_ascii_char()
             self.add_edge(node, edge)
 
-    def breadth_first_traversal(self, start_val):
-        """Return full breadth first traversal path."""
+    def traversal_keyerror(self, start_val):
         if start_val not in self.graph:
             raise KeyError("Node doesn't exist")
+
+    def breadth_first_traversal(self, start_val):
+        """Return full breadth first traversal path."""
+        self.traversal_keyerror(start_val)
 
         if not self.graph[start_val]:
             return [start_val]
@@ -111,5 +114,24 @@ class SimpleGraph(object):
                 for edge in self.graph[node]:
                     if edge not in walked and edge not in keep_walking:
                         keep_walking.append(edge)
+        return walked
+
+    def depth_first_traversal(self, start_val):
+        """Return depth first graph travesal."""
+
+        if not self.graph[start_val]:
+            return [start_val]
+
+        self.traversal_keyerror(start_val)
+        walked = []
+        keep_walking = [start_val]
+        while keep_walking:
+            node = keep_walking[0]
+            if node not in walked:
+                walked.append(node)
+                del keep_walking[0]
+                for edge in reversed(self.graph[node]):
+                    if edge not in walked and edge not in keep_walking:
+                        keep_walking.insert(0, edge)
         return walked
 
