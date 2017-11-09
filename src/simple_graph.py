@@ -94,6 +94,7 @@ class SimpleGraph(object):
             self.add_edge(node, edge)
 
     def traversal_keyerror(self, start_val):
+        """If value not in graph return KeyError."""
         if start_val not in self.graph:
             raise KeyError("Node doesn't exist")
 
@@ -118,7 +119,6 @@ class SimpleGraph(object):
 
     def depth_first_traversal(self, start_val):
         """Return depth first graph travesal."""
-
         if not self.graph[start_val]:
             return [start_val]
 
@@ -156,5 +156,3 @@ if __name__ == '__main__':
         print("Depth traversal:   {}".format(depth))
         print("Breadth time = {}".format(t1 - t0))
         print("Depth time =   {}\n".format(t4 - t3))
-
-

@@ -205,14 +205,12 @@ def test_breadth_start_node_has_no_edges(empty_g):
 
 
 def test_breadth_not_get_caught_in_cycle(cyclic):
-    """Test breadth traversal doesn't get caught in cyclical loop in a
-    cyclic graph"""
+    """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
     assert cyclic.breadth_first_traversal('A') == ['A', 'B', 'C']
 
 
 def test_breadth_non_cycle_returns_correct_traversal(non_ref):
-    """Test breadth traversal doesn't get caught in cyclical loop in a
-    cyclic graph"""
+    """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
     from string import ascii_uppercase as ascii_up
     assert non_ref.breadth_first_traversal('A') == list(ascii_up[:7])
 
@@ -231,14 +229,11 @@ def test_depth_start_node_has_no_edges(empty_g):
 
 
 def test_depth_not_get_caught_in_cycle(cyclic):
-    """Test breadth traversal doesn't get caught in cyclical loop in a
-    cyclic graph"""
+    """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
     assert cyclic.depth_first_traversal('A') == ['A', 'B', 'C']
 
 
 def test_depth_non_cycle_returns_correct_traversal(non_ref):
-    """Test breadth traversal doesn't get caught in cyclical loop in a
-    cyclic graph"""
+    """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
     correct_result = ['A', 'B', 'D', 'E', 'C', 'F', 'G']
     assert non_ref.depth_first_traversal('A') == correct_result
-
