@@ -190,3 +190,14 @@ def test_random_ascii_char_is_returned(empty_g):
     import random
     import string
     assert empty_g.random_ascii_char() in string.ascii_uppercase[:10]
+
+def test_breadth_raises_key_error(empty_g):
+    """If start node not in graph, raise KeyError."""
+    empty_g.add_edge('A', 'B')
+    with pytest.raises(KeyError):
+        empty_g.breadth_first_traversal('C')
+
+def test_breadth_start_node_has_no_edges(empty_g):
+    """If start node has no edges, the node is returned."""
+    empty_g.add_edge('A', 'B')
+    empty_g.breadth_first_traversal('A') == ['A']
