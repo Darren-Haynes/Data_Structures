@@ -83,7 +83,7 @@ class SimpleGraph(object):
         """Return random upper case ascii char between 'A' and  'J'."""
         return random.choice(string.ascii_uppercase[:10])
 
-    def create_random_graph(self, nodes=20):
+    def create_random_graph(self, nodes=20):  # pragma no cover
         """Make a random graph."""
         for i in range(nodes):
             node = self.random_ascii_char()
@@ -93,6 +93,30 @@ class SimpleGraph(object):
                 edge = self.random_ascii_char()
             self.add_edge(node, edge)
 
-    def depth_first_traversal(start_val):
-        """Return full depth first traversal path."""
-        pass
+    def breadth_first_traversal(self, start_val):
+        """Return full breadth first traversal path."""
+        if start_val not in self.graph:
+            raise ValueError("Node doesn't exist")
+
+        if not self.graph[start_val]:
+            return [start_val]
+
+        walked = []
+        keep_walking = [start_val]
+        print("KEEP WALK BEFORE WHILE:", keep_walking)
+        while keep_walking:
+            node = keep_walking[0]
+            print("I AM NODE:", node)
+            if node not in walked:
+                walked.append(node)
+                print("WALKED AFTER APPEND:", walked)
+                del keep_walking[0]
+                print("KEEP WALKING AFTER DEL:", keep_walking)
+                for edge in self.graph[node]:
+                    print(edge)
+                    if edge not in walked and edge not in keep_walking:
+                        print("TRUE")
+                        keep_walking.append(edge)
+                        print("KEEP WALKING AFTER APPEND EDGE:", keep_walking)
+        return walked
+
