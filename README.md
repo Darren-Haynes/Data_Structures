@@ -61,3 +61,14 @@ the value is the node it points to. Example of the graph data:
 - __adjacent()__ = O(n)
   The adjacent method makes use of the `value in list` method which is an
   `O(n)` operation.
+
+
+- __breadth_first_traversal()__ = O(n^2)
+  The bottleneck in this method is the for loop nested inside the while loop.
+
+
+- __depth_first_traversal()__ = O(n^2)
+  This function has an additional loop in contrast to the
+  `breadth_first_traversal()` method. There is a for loop nested in a while
+  loop, however, the list `reversed` built-in method is applied as part of the
+  for loop. This creates a whopping `O(n^3)`
