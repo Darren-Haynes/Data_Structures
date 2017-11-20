@@ -1,4 +1,4 @@
-"""A weighted, directed graph."""
+"""A weighted, directed graph with shortest path implementations."""
 import random
 import string
 
