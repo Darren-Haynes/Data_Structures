@@ -1,4 +1,4 @@
-"""An unweighted, directed graph."""
+"""A weighted, directed graph."""
 import random
 import string
 
