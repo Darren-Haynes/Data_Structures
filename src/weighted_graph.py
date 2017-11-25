@@ -1,32 +1,32 @@
-"""A weighted, directed graph."""
+"""An unweighted, directed graph."""
 import random
 import string
 
 
-class SimpleGraph(object):
+class WeightedGraph(object):
     """Simple Graph Object."""
 
     def __init__(self):
         """Initiate an empty graph."""
         self.graph = {}
 
-    def add_node(self, vertex):
+    def add_node(self, val):
         """Add a node to the graph."""
-        self.graph.setdefault(vertex, [])
+        self.graph.setdefault(val, [])
 
-    def add_edge(self, vertex, edge):
-        """Add vertex and it's edge."""
-        if vertex == edge:
+    def add_edge(self, val, edge):
+        """Add value and it's edge."""
+        if val == edge:
             raise ValueError("Nodes cannot be self referential.")
 
         if edge not in self.graph:
             self.add_node(edge)
 
-        if vertex in self.graph:
-            if edge not in self.graph[vertex]:
-                self.graph[vertex].append(edge)
+        if val in self.graph:
+            if edge not in self.graph[val]:
+                self.graph[val].append(edge)
         else:
-            self.graph[vertex] = [edge]
+            self.graph[val] = [edge]
 
     def nodes(self):
         """Return all nodes in the graph."""
@@ -39,48 +39,48 @@ class SimpleGraph(object):
             for edge in edges:
                 if edge not in all_edges:
                     all_edges.append(edge)
-        return all_edges
+        return tuple(all_edges)
 
-    def del_node(self, vertex):
-        """If node in graph, delete it and all references to it."""
+    def del_node(self, val):
+        """If node in graph, delete it."""
         try:
-            vertex in self.graph
-            for loop_vertex in self.graph:
-                if vertex in self.graph[loop_vertex]:
-                    self.graph[loop_vertex].remove(vertex)
-            del self.graph[vertex]
+            val in self.graph
+            for loop_val in self.graph:
+                if val in self.graph[loop_val]:
+                    self.graph[loop_val].remove(val)
+            del self.graph[val]
         except KeyError:
-            raise KeyError("Node doesn't exist")
+            raise ValueError("Node doesn't exist")
 
-    def del_edge(self, vertex, edge):
+    def del_edge(self, val, edge):
         """Remove connection between node and edge if edge exists."""
         try:
-            vertex in self.graph
+            val in self.graph
             try:
-                edge in self.graph[vertex]
-                self.graph[vertex].remove(edge)
+                edge in self.graph[val]
+                self.graph[val].remove(edge)
             except ValueError:
                 raise ValueError("Edge doesn't exist")
         except KeyError:
-            raise KeyError("Node doesn't exist")
+            raise ValueError("Node doesn't exist")
 
-    def has_node(self, vertex):
+    def has_node(self, val):
         """If node exists return True."""
-        return vertex in self.graph
+        return val in self.graph
 
-    def neighbors(self, vertex):
+    def neighbors(self, val):
         """Return all edges of a node."""
-        if vertex not in self.graph:
-            raise KeyError("Node doesn't exist.")
+        if val not in self.graph:
+            raise ValueError("Node doesn't exist.")
 
-        return self.graph[vertex]
+        return self.graph[val]
 
-    def adjacent(self, vertex1, vertex2):
+    def adjacent(self, val1, val2):
         """Return if one node has edge with the other."""
-        if vertex1 not in self.graph or vertex2 not in self.graph:
-            raise KeyError("Node doesn't exist.")
+        if val1 not in self.graph or val2 not in self.graph:
+            raise ValueError("Node doesn't exist.")
 
-        return vertex2 in self.graph[vertex1] or vertex1 in self.graph[vertex2]
+        return val2 in self.graph[val1] or val1 in self.graph[val2]
 
     def random_ascii_char(self):
         """Return random upper case ascii char between 'A' and  'J'."""
@@ -96,20 +96,20 @@ class SimpleGraph(object):
                 edge = self.random_ascii_char()
             self.add_edge(node, edge)
 
-    def traversal_keyerror(self, start_vertex):
-        """If vertexue not in graph return KeyError."""
-        if start_vertex not in self.graph:
-            raise KeyError("Node doesn't exist")
+    def traversal_keyerror(self, start_val):
+        """If value not in graph return ValueError."""
+        if start_val not in self.graph:
+            raise ValueError("Node doesn't exist")
 
-    def breadth_first_traversal(self, start_vertex):
+    def breadth_first_traversal(self, start_val):
         """Return full breadth first traversal path."""
-        self.traversal_keyerror(start_vertex)
+        self.traversal_keyerror(start_val)
 
-        if not self.graph[start_vertex]:
-            return [start_vertex]
+        if not self.graph[start_val]:
+            return [start_val]
 
         walked = []
-        keep_walking = [start_vertex]
+        keep_walking = [start_val]
         while keep_walking:
             node = keep_walking[0]
             if node not in walked:
@@ -120,14 +120,14 @@ class SimpleGraph(object):
                         keep_walking.append(edge)
         return walked
 
-    def depth_first_traversal(self, start_vertex):
+    def depth_first_traversal(self, start_val):
         """Return depth first graph travesal."""
-        if not self.graph[start_vertex]:
-            return [start_vertex]
+        if not self.graph[start_val]:
+            return [start_val]
 
-        self.traversal_keyerror(start_vertex)
+        self.traversal_keyerror(start_val)
         walked = []
-        keep_walking = [start_vertex]
+        keep_walking = [start_val]
         while keep_walking:
             node = keep_walking[0]
             if node not in walked:

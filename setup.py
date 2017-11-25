@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='Weighted graph',
-    description='Create a simple graph data structure',
+    description='Create a weighted graph data structure',
     package_dir={'': 'src'},
     author='Darren Haynes',
     author_email='dummy-email@zoho.com',

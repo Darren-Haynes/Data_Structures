@@ -90,7 +90,7 @@ def test_del_node_deletes_the_node(empty_g):
 def test_del_node_raises_key_error(empty_g):
     """If node not in graph raise key error."""
     empty_g.add_node(1)
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.del_node(0)
 
 
@@ -111,9 +111,9 @@ def test_del_edge_raises_value_error(empty_g):
 
 
 def test_del_edge_raises_key_error(empty_g):
-    """If node doesn't exist raise KeyError."""
+    """If node doesn't exist raise ValueError."""
     empty_g.add_edge('A', 'D')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.del_edge('B', 'C')
 
 
@@ -132,7 +132,7 @@ def test_has_node_returns_false(empty_g):
 def test_neighbors_returns_key_error(empty_g):
     """If node not in graph, raise key error."""
     empty_g.add_edge('A', 'D')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.neighbors('B')
 
 
@@ -172,16 +172,16 @@ def test_adjacent_return_false_if_val2_not_edge_to_val1(empty_g):
 
 
 def test_adjacent_raise_keyerror_if_val1_not_in_graph(empty_g):
-    """If val1 param not in graph, raise KeyError."""
+    """If val1 param not in graph, raise ValueError."""
     empty_g.add_edge('B', 'A')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.adjacent('C', 'A')
 
 
 def test_adjacent_raise_keyerror_if_val2_not_in_graph(empty_g):
-    """If val2 param not in graph, raise KeyError."""
+    """If val2 param not in graph, raise ValueError."""
     empty_g.add_edge('B', 'A')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.adjacent('A', 'C')
 
 
@@ -192,9 +192,9 @@ def test_random_ascii_char_is_returned(empty_g):
 
 
 def test_breadth_raises_key_error(empty_g):
-    """If start node not in graph, raise KeyError."""
+    """If start node not in graph, raise ValueError."""
     empty_g.add_edge('A', 'B')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.breadth_first_traversal('C')
 
 
@@ -216,7 +216,7 @@ def test_breadth_non_cycle_returns_correct_traversal(non_ref):
 
 
 def test_depth_raises_key_error(empty_g):
-    """If start node not in graph, raise KeyError."""
+    """If start node not in graph, raise ValueError."""
     empty_g.add_edge('A', 'B')
     with pytest.raises(KeyError):
         empty_g.depth_first_traversal('C')
