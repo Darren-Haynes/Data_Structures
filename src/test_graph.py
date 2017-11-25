@@ -82,7 +82,7 @@ def test_del_node_deletes_the_node(empty_g):
 def test_del_node_raises_key_error(empty_g):
     """If node not in graph raise key error."""
     empty_g.add_node(1)
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.del_node(0)
 
 
@@ -103,9 +103,9 @@ def test_del_edge_raises_value_error(empty_g):
 
 
 def test_del_edge_raises_key_error(empty_g):
-    """If node doesn't exist raise KeyError."""
+    """If node doesn't exist raise ValueError."""
     empty_g.add_edge('A', 'D')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.del_edge('B', 'C')
 
 
@@ -124,7 +124,7 @@ def test_has_node_returns_false(empty_g):
 def test_neighbors_returns_key_error(empty_g):
     """If node not in graph, raise key error."""
     empty_g.add_edge('A', 'D')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.neighbors('B')
 
 
@@ -164,15 +164,15 @@ def test_adjacent_return_false_if_val2_not_edge_to_val1(empty_g):
 
 
 def test_adjacent_raise_keyerror_if_val1_not_in_graph(empty_g):
-    """If val1 param not in graph, raise KeyError."""
+    """If val1 param not in graph, raise ValueError."""
     empty_g.add_edge('B', 'A')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.adjacent('C', 'A')
 
 
 def test_adjacent_raise_keyerror_if_val2_not_in_graph(empty_g):
-    """If val2 param not in graph, raise KeyError."""
+    """If val2 param not in graph, raise ValueError."""
     empty_g.add_edge('B', 'A')
-    with pytest.raises(KeyError):
+    with pytest.raises(ValueError):
         empty_g.adjacent('A', 'C')
 
