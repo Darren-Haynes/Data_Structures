@@ -1,5 +1,6 @@
 """An unweighted, directed graph."""
-
+import random
+import string
 
 class SimpleGraph(object):
     """Simple Graph Object."""
@@ -40,6 +41,9 @@ class SimpleGraph(object):
         """If node in graph, delete it."""
         try:
             val in self.graph
+            for loop_val in self.graph:
+                if val in self.graph[loop_val]:
+                    self.graph[loop_val].remove(val)
             del self.graph[val]
         except KeyError:
             raise KeyError("Node doesn't exist")
@@ -73,3 +77,17 @@ class SimpleGraph(object):
             raise KeyError("Node doesn't exist.")
 
         return val2 in self.graph[val1] or val1 in self.graph[val2]
+
+    def random_ascii_char(self):
+        """Return random upper case ascii char between 'A' and  'J'."""
+        return random.choice(string.ascii_uppercase[:10])
+
+    def create_random_graph(self, nodes=20):  # pragma no cover
+        """Make a random graph."""
+        for i in range(nodes):
+            node = self.random_ascii_char()
+            edge = node
+
+            while edge == node:
+                edge = self.random_ascii_char()
+            self.add_edge(node, edge)
