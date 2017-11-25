@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='Simple graph',
+    name='Weighted graph',
     description='Create a simple graph data structure',
     package_dir={'': 'src'},
     author='Darren Haynes',
@@ -14,7 +14,7 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'graph=simple_graph:main'
+            'graph=weighted_graph:main'
         }
     }
 )
