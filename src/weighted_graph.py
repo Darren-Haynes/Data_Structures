@@ -31,8 +31,8 @@ class WeightedGraph(object):
         if val in self.graph:
             if edge not in self.graph[val]:
                 self.graph[val][edge] = weight
-        else:
-            self.graph[val][edge] = weight
+        # else:
+            # self.graph[val][edge] = weight
 
     def nodes(self):
         """Return all nodes in the graph."""
@@ -155,7 +155,7 @@ class WeightedGraph(object):
         return walked
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     import time
     print("\nCOMPARE BREADTH VS DEPTH TRAVERSAL\n")
     for i in range(5):

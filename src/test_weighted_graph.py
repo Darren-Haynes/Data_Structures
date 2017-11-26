@@ -240,3 +240,11 @@ def test_depth_non_cycle_returns_correct_traversal(non_ref):
     """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
     correct_result = ['A', 'B', 'D', 'E', 'C', 'F', 'G']
     assert non_ref.depth_first_traversal('A') == correct_result
+
+
+def test_edges_returns_tuple():
+    """The edges method should return a tuple."""
+    from weighted_graph import WeightedGraph
+    g = WeightedGraph()
+    g.create_random_graph()
+    assert isinstance(g.edges(), tuple)
