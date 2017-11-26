@@ -148,44 +148,44 @@ def test_neighbors_return_list_of_edges(empty_g):
     assert empty_g.neighbors('A') == ['B', 'C', 'D']
 
 
-# def test_adjacent_return_true_if_val1_edge_to_val2(empty_g):
-    # """If first param has edge with second param, return true."""
-    # empty_g.add_edge('A', 'B')
-    # assert empty_g.adjacent('A', 'B')
+def test_adjacent_return_true_if_val1_edge_to_val2(empty_g):
+    """If first param has edge with second param, return true."""
+    empty_g.add_edge('A', 'B', 5)
+    assert empty_g.adjacent('A', 'B')
 
 
-# def test_adjacent_return_true_if_val2_edge_to_val1(empty_g):
-    # """If first param has edge with second param, return true."""
-    # empty_g.add_edge('B', 'A')
-    # assert empty_g.adjacent('B', 'A')
+def test_adjacent_return_true_if_val2_edge_to_val1(empty_g):
+    """If first param has edge with second param, return true."""
+    empty_g.add_edge('B', 'A', 5)
+    assert empty_g.adjacent('B', 'A')
 
 
-# def test_adjacent_return_false_if_val1_not_edge_to_val2(empty_g):
-    # """If first param has edge with second param, return true."""
-    # empty_g.add_edge('A', 'B')
-    # empty_g.add_edge('B', 'C')
-    # assert not empty_g.adjacent('A', 'C')
+def test_adjacent_return_false_if_val1_not_edge_to_val2(empty_g):
+    """If first param has edge with second param, return true."""
+    empty_g.add_edge('A', 'B', 5)
+    empty_g.add_edge('B', 'C', 5)
+    assert not empty_g.adjacent('A', 'C')
 
 
-# def test_adjacent_return_false_if_val2_not_edge_to_val1(empty_g):
-    # """If first param has edge with second param, return true."""
-    # empty_g.add_edge('B', 'A')
-    # empty_g.add_edge('C', 'B')
-    # assert not empty_g.adjacent('C', 'A')
+def test_adjacent_return_false_if_val2_not_edge_to_val1(empty_g):
+    """If first param has edge with second param, return true."""
+    empty_g.add_edge('B', 'A', 5)
+    empty_g.add_edge('C', 'B', 5)
+    assert not empty_g.adjacent('C', 'A')
 
 
-# def test_adjacent_raise_keyerror_if_val1_not_in_graph(empty_g):
-    # """If val1 param not in graph, raise ValueError."""
-    # empty_g.add_edge('B', 'A')
-    # with pytest.raises(ValueError):
-        # empty_g.adjacent('C', 'A')
+def test_adjacent_raise_keyerror_if_val1_not_in_graph(empty_g):
+    """If val1 param not in graph, raise ValueError."""
+    empty_g.add_edge('B', 'A', 5)
+    with pytest.raises(ValueError):
+        empty_g.adjacent('C', 'A')
 
 
-# def test_adjacent_raise_keyerror_if_val2_not_in_graph(empty_g):
-    # """If val2 param not in graph, raise ValueError."""
-    # empty_g.add_edge('B', 'A')
-    # with pytest.raises(ValueError):
-        # empty_g.adjacent('A', 'C')
+def test_adjacent_raise_keyerror_if_val2_not_in_graph(empty_g):
+    """If val2 param not in graph, raise ValueError."""
+    empty_g.add_edge('B', 'A', 5)
+    with pytest.raises(ValueError):
+        empty_g.adjacent('A', 'C')
 
 
 # def test_random_ascii_char_is_returned(empty_g):
