@@ -1,7 +1,9 @@
 """An unweighted, directed graph."""
-from collections import OrderedDict
 import random
 import string
+
+from collections import OrderedDict
+from priorityq import PriorityQ
 
 class WeightedGraph(object):
     """Simple Graph Object."""
@@ -104,7 +106,7 @@ class WeightedGraph(object):
 
             while edge == node:
                 edge = self.random_ascii_char()
-                weight = random.randint(0, 100)
+                weight = random.randint(0, 20)
             self.add_edge(node, edge, weight)
 
     def traversal_keyerror(self, start_val):
@@ -151,6 +153,36 @@ class WeightedGraph(object):
                     if edge not in walked and edge not in keep_walking:
                         keep_walking.insert(0, edge)
         return walked
+
+    def dijkstra(self, start, end):
+        """Shortest path between 2 nodes Dijkstra algorithm."""
+
+        not_visited = set(self.graph)
+        distances = {}
+        for node in self.graph:
+            distances[node] = float("inf")
+
+        distances[start] = 0
+        not_visited.remove(start)
+        parents = {}
+        curr = start
+        pq = PriorityQ()
+        while not_visited:
+            # import pdb; pdb.set_trace()
+            try:
+                for edge in self.neighbors(curr):
+                    if edge in not_visited:
+                        not_visited.remove(edge)
+                        pq.insert(edge)
+                        w = distances[curr] + self.graph[curr][edge]
+                        if w < distances[edge]:
+                            distances[edge] = w
+            except ValueError:
+                continue
+            # import pdb; pdb.set_trace()
+            curr = pq.pop()
+        return distances
+
 
 
 if __name__ == '__main__':  # pragma: no cover
