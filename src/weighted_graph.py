@@ -12,21 +12,28 @@ class WeightedGraph(object):
 
     def add_node(self, val):
         """Add a node to the graph."""
-        self.graph.setdefault(val, [])
+        self.graph.setdefault(val, {})
 
-    def add_edge(self, val, edge):
+    def add_edge(self, val, edge, weight):
         """Add value and it's edge."""
         if val == edge:
             raise ValueError("Nodes cannot be self referential.")
+
+        if not isinstance(weight, (float, int)):
+            raise ValueError("Weight must be a number")
+
+        if val not in self.graph:
+            self.add_node(val)
 
         if edge not in self.graph:
             self.add_node(edge)
 
         if val in self.graph:
             if edge not in self.graph[val]:
-                self.graph[val].append(edge)
+                self.graph[val][edge] = weight
+                # self.graph[val].append(edge)
         else:
-            self.graph[val] = [edge]
+            self.graph[val][edge] = weight
 
     def nodes(self):
         """Return all nodes in the graph."""
@@ -46,8 +53,11 @@ class WeightedGraph(object):
         try:
             val in self.graph
             for loop_val in self.graph:
-                if val in self.graph[loop_val]:
-                    self.graph[loop_val].remove(val)
+                try:
+                    self.graph[loop_val][val]
+                    del self.graph[loop_val][val]
+                except KeyError:
+                    pass
             del self.graph[val]
         except KeyError:
             raise ValueError("Node doesn't exist")
@@ -57,7 +67,8 @@ class WeightedGraph(object):
         try:
             val in self.graph
             try:
-                edge in self.graph[val]
+                self.graph[val] == edge
+                del self.graph[val]
                 self.graph[val].remove(edge)
             except ValueError:
                 raise ValueError("Edge doesn't exist")
@@ -94,7 +105,8 @@ class WeightedGraph(object):
 
             while edge == node:
                 edge = self.random_ascii_char()
-            self.add_edge(node, edge)
+                weight = random.randint(0, 100)
+            self.add_edge(node, edge, weight)
 
     def traversal_keyerror(self, start_val):
         """If value not in graph return ValueError."""
