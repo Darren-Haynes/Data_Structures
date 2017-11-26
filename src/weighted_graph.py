@@ -12,7 +12,7 @@ class WeightedGraph(object):
 
     def add_node(self, val):
         """Add a node to the graph."""
-        self.graph.setdefault(val, {})
+        self.graph.setdefault(val, OrderedDict())
 
     def add_edge(self, val, edge, weight):
         """Add value and it's edge."""
@@ -31,8 +31,6 @@ class WeightedGraph(object):
         if val in self.graph:
             if edge not in self.graph[val]:
                 self.graph[val][edge] = weight
-        # else:
-            # self.graph[val][edge] = weight
 
     def nodes(self):
         """Return all nodes in the graph."""
