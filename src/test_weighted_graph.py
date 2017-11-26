@@ -97,27 +97,27 @@ def test_del_node_raises_key_error(empty_g):
         empty_g.del_node(0)
 
 
-# def test_del_edge_deletes_edge(empty_g):
-    # """If edge exists, delete it."""
-    # empty_g.add_edge('A', 'B')
-    # empty_g.add_edge('A', 'C')
-    # empty_g.add_edge('A', 'D')
-    # empty_g.del_edge('A', 'B')
-    # assert 'B' not in empty_g.graph['A']
+def test_del_edge_deletes_edge(empty_g):
+    """If edge exists, delete it."""
+    empty_g.add_edge('A', 'B', 5)
+    empty_g.add_edge('A', 'C', 5)
+    empty_g.add_edge('A', 'D', 5)
+    empty_g.del_edge('A', 'B')
+    assert empty_g.graph['A'] != {'B': 5}
 
 
-# def test_del_edge_raises_value_error(empty_g):
-    # """If edge of node doesn't exist raise ValueError."""
-    # empty_g.add_edge('A', 'D')
-    # with pytest.raises(ValueError):
-        # empty_g.del_edge('A', 'C')
+def test_del_edge_raises_value_error(empty_g):
+    """If edge of node doesn't exist raise ValueError."""
+    empty_g.add_edge('A', 'D', 5)
+    with pytest.raises(ValueError):
+        empty_g.del_edge('A', 'C')
 
 
-# def test_del_edge_raises_key_error(empty_g):
-    # """If node doesn't exist raise ValueError."""
-    # empty_g.add_edge('A', 'D')
-    # with pytest.raises(ValueError):
-        # empty_g.del_edge('B', 'C')
+def test_del_edge_raises_key_error(empty_g):
+    """If node doesn't exist raise ValueError."""
+    empty_g.add_edge('A', 'D', 5)
+    with pytest.raises(ValueError):
+        empty_g.del_edge('B', 'C')
 
 
 # def test_has_node_returns_true(empty_g):

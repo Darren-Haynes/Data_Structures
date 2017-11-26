@@ -68,8 +68,7 @@ class WeightedGraph(object):
             val in self.graph
             try:
                 self.graph[val] == edge
-                del self.graph[val]
-                self.graph[val].remove(edge)
+                del self.graph[edge]
             except ValueError:
                 raise ValueError("Edge doesn't exist")
         except KeyError:
