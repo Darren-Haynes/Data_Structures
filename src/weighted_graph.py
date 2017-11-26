@@ -83,7 +83,10 @@ class WeightedGraph(object):
         if val not in self.graph:
             raise ValueError("Node doesn't exist.")
 
-        return self.graph[val]
+        edges = []
+        for edge in self.graph[val]:
+            edges.append(tuple(edge)[0])
+        return (edges)
 
     def adjacent(self, val1, val2):
         """Return if one node has edge with the other."""

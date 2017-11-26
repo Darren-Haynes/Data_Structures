@@ -120,32 +120,32 @@ def test_del_edge_raises_key_error(empty_g):
         empty_g.del_edge('B', 'C')
 
 
-# def test_has_node_returns_true(empty_g):
-    # """If node in graph, return True."""
-    # empty_g.add_edge('A', 'D')
-    # assert empty_g.has_node('A')
+def test_has_node_returns_true(empty_g):
+    """If node in graph, return True."""
+    empty_g.add_edge('A', 'D', 5)
+    assert empty_g.has_node('A')
 
 
-# def test_has_node_returns_false(empty_g):
-    # """If node in graph, return True."""
-    # empty_g.add_edge('A', 'D')
-    # assert not empty_g.has_node('B')
+def test_has_node_returns_false(empty_g):
+    """If node in graph, return True."""
+    empty_g.add_edge('A', 'D', 5)
+    assert not empty_g.has_node('B')
 
 
-# def test_neighbors_returns_key_error(empty_g):
-    # """If node not in graph, raise key error."""
-    # empty_g.add_edge('A', 'D')
-    # with pytest.raises(ValueError):
-        # empty_g.neighbors('B')
+def test_neighbors_returns_key_error(empty_g):
+    """If node not in graph, raise key error."""
+    empty_g.add_edge('A', 'D', 5)
+    with pytest.raises(ValueError):
+        empty_g.neighbors('B')
 
 
-# def test_neighbors_return_list_of_edges(empty_g):
-    # """If node exits, all its edges should be returned as list."""
-    # empty_g.add_node('A')
-    # empty_g.add_edge('A', 'B')
-    # empty_g.add_edge('A', 'C')
-    # empty_g.add_edge('A', 'D')
-    # assert empty_g.neighbors('A') == ['B', 'C', 'D']
+def test_neighbors_return_list_of_edges(empty_g):
+    """If node exits, all its edges should be returned as list."""
+    empty_g.add_node('A')
+    empty_g.add_edge('A', 'B', 5)
+    empty_g.add_edge('A', 'C', 5)
+    empty_g.add_edge('A', 'D', 5)
+    assert empty_g.neighbors('A') == ['B', 'C', 'D']
 
 
 # def test_adjacent_return_true_if_val1_edge_to_val2(empty_g):
