@@ -14,12 +14,12 @@ def non_ref():
     """Create simple non referential graph."""
     from weighted_graph import WeightedGraph
     empty_g = WeightedGraph()
-    empty_g.add_edge('A', 'B')
-    empty_g.add_edge('A', 'C')
-    empty_g.add_edge('B', 'D')
-    empty_g.add_edge('B', 'E')
-    empty_g.add_edge('C', 'F')
-    empty_g.add_edge('C', 'G')
+    empty_g.add_edge('A', 'B', 5)
+    empty_g.add_edge('A', 'C', 5)
+    empty_g.add_edge('B', 'D', 5)
+    empty_g.add_edge('B', 'E', 5)
+    empty_g.add_edge('C', 'F', 5)
+    empty_g.add_edge('C', 'G', 5)
     return empty_g
 
 
@@ -28,7 +28,7 @@ def cyclic():
     """Create simple cyclic graph."""
     from weighted_graph import WeightedGraph
     empty_g = WeightedGraph()
-    empty_g.add_edge('A', 'B')
-    empty_g.add_edge('B', 'C')
-    empty_g.add_edge('C', 'A')
+    empty_g.add_edge('A', 'B', 5)
+    empty_g.add_edge('B', 'C', 5)
+    empty_g.add_edge('C', 'A', 5)
     return empty_g

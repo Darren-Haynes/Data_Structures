@@ -147,7 +147,10 @@ class WeightedGraph(object):
             if node not in walked:
                 walked.append(node)
                 del keep_walking[0]
-                for edge in reversed(self.graph[node]):
+                edges = []
+                for edge in self.graph[node]:
+                    edges.append(edge[0])
+                for edge in reversed(edges):
                     if edge not in walked and edge not in keep_walking:
                         keep_walking.insert(0, edge)
         return walked
