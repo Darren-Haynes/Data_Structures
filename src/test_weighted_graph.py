@@ -145,7 +145,7 @@ def test_neighbors_return_list_of_edges(empty_g):
     empty_g.add_edge('A', 'B', 5)
     empty_g.add_edge('A', 'C', 5)
     empty_g.add_edge('A', 'D', 5)
-    assert empty_g.neighbors('A') == ['B', 'C', 'D']
+    assert sorted(empty_g.neighbors('A')) == sorted(['B', 'C', 'D'])
 
 
 def test_adjacent_return_true_if_val1_edge_to_val2(empty_g):

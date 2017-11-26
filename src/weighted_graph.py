@@ -1,14 +1,14 @@
 """An unweighted, directed graph."""
+from collections import OrderedDict
 import random
 import string
-
 
 class WeightedGraph(object):
     """Simple Graph Object."""
 
     def __init__(self):
         """Initiate an empty graph."""
-        self.graph = {}
+        self.graph = OrderedDict()
 
     def add_node(self, val):
         """Add a node to the graph."""
@@ -31,7 +31,6 @@ class WeightedGraph(object):
         if val in self.graph:
             if edge not in self.graph[val]:
                 self.graph[val][edge] = weight
-                # self.graph[val].append(edge)
         else:
             self.graph[val][edge] = weight
 
@@ -86,7 +85,7 @@ class WeightedGraph(object):
         edges = []
         for edge in self.graph[val]:
             edges.append(tuple(edge)[0])
-        return (edges)
+        return edges
 
     def adjacent(self, val1, val2):
         """Return if one node has edge with the other."""
@@ -160,7 +159,7 @@ if __name__ == '__main__':
     import time
     print("\nCOMPARE BREADTH VS DEPTH TRAVERSAL\n")
     for i in range(5):
-        g = SimpleGraph()
+        g = WeightedGraph()
         g.create_random_graph()
 
         t0 = time.time()
