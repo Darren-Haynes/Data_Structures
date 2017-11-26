@@ -1,6 +1,6 @@
 # Data Structures
 
-### Simple unweighted directed graph implementation for the Codefellows Python 401 Course
+### Weighted directed graph implementation for the Codefellows Python 401 Course
 
 #### Implentation
 A python dictionary is used to store the nodes. The key is name of the node,
