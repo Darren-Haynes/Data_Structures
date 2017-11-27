@@ -98,7 +98,7 @@ class WeightedGraph(object):
         """Return random upper case ascii char between 'A' and  'J'."""
         return random.choice(string.ascii_uppercase[:10])
 
-    def create_random_graph(self, nodes=20):  # pragma no cover
+    def create_random_graph(self):  # pragma no cover
         """Make a random graph."""
         for i in range(nodes):
             node = self.random_ascii_char()
