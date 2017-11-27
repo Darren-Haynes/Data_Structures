@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='Weighted graph',
+    name='Binary Search Tree',
     description='Create a weighted graph data structure',
     package_dir={'': 'src'},
     author='Darren Haynes',
@@ -14,7 +14,7 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'graph=weighted_graph:main'
+            'bst=bst:main'
         }
     }
 )
