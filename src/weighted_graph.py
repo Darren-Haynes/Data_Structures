@@ -5,6 +5,7 @@ import string
 from collections import OrderedDict
 from priorityq import PriorityQ
 
+
 class WeightedGraph(object):
     """Simple Graph Object."""
 
@@ -100,7 +101,7 @@ class WeightedGraph(object):
 
     def create_random_graph(self):  # pragma no cover
         """Make a random graph."""
-        for i in range(nodes):
+        for i in range(20):
             node = self.random_ascii_char()
             edge = node
 
@@ -155,34 +156,53 @@ class WeightedGraph(object):
         return walked
 
     def dijkstra(self, start, end):
-        """Shortest path between 2 nodes Dijkstra algorithm."""
+        """Find all possible shortests distances between nodes
+        using Dijkstra algorithm."""
 
-        not_visited = set(self.graph)
+        if start == end:
+            print("Error, start path is end path")
+            return
+
+        if start not in self.graph:
+            print("Start node not in graph")
+            return
+
+        if end not in self.graph:
+            print("End node not in graph")
+            return
+
+        visited = set(self.graph)
         distances = {}
+        pq = PriorityQ()
         for node in self.graph:
+            pq.insert(node)
             distances[node] = float("inf")
 
         distances[start] = 0
-        not_visited.remove(start)
         parents = {}
-        curr = start
-        pq = PriorityQ()
-        while not_visited:
-            # import pdb; pdb.set_trace()
-            try:
-                for edge in self.neighbors(curr):
-                    if edge in not_visited:
-                        not_visited.remove(edge)
-                        pq.insert(edge)
-                        w = distances[curr] + self.graph[curr][edge]
-                        if w < distances[edge]:
-                            distances[edge] = w
-            except ValueError:
-                continue
-            # import pdb; pdb.set_trace()
+        while pq.queue:
             curr = pq.pop()
-        return distances
+            if self.neighbors(curr):
+                for edge in self.neighbors:
+                    if edge not in visited:
+                    visited.apped(edge)
+                    w = distances[curr] + self.graph[curr][edge]
+                    if w < distances[edge]:
+                        distances[edge] = w
+                        parents[curr] = edge
+            curr = pq.pop()
+        print(parents)
+        return self.shortest_path(parents, start, end)
 
+    def shortest_path(self, parents, start, end):
+        """Return shortest path between start and end."""
+        path = [start]
+        curr = start
+        while curr != end or curr != None:
+            curr = parents.get(curr)
+            path.append(curr)
+
+        return path
 
 
 if __name__ == '__main__':  # pragma: no cover
