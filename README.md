@@ -4,7 +4,7 @@
 
 #### Big 0 Notation
 
-- ***__Instantiating an empty tree__ = O(1)
+- __Instantiating an empty tree__ = O(n))
   It is constant time. A tree object is created nothing more.
 
 
