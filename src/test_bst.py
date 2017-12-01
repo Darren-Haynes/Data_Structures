@@ -99,6 +99,7 @@ def test_tree_two_nodes_right(one_t):
     one_t.insert(5)
     assert one_t.depth() == 1
 
+
 def test_balanced_tree_with_3_nodes_has_depth_one(balanced_3_nodes):
     """Tree with 3 nodes balanced should have depth of 1."""
     assert balanced_3_nodes.depth() == 1
@@ -174,3 +175,24 @@ def test_tree_2_nodes_right_unbalanced(one_t):
     """Tree with 2 nodes and right sided should return balance of 1."""
     one_t.insert(11)
     assert one_t.balance() == -1
+
+def test_tree_3_nodes_balanced_return_1(balanced_3_nodes):
+    """Tree with 3 balanced nodes should return balance of 0."""
+    assert balanced_3_nodes.balance() == 0
+
+
+def test_tree_4_nodes_left_unbalanced_return_1(balanced_3_nodes):
+    """Tree with 3 balanced nodes should return balance of 0."""
+    balanced_3_nodes.insert(8)
+    assert balanced_3_nodes.balance() == 1
+
+
+def test_tree_4_nodes_right_unbalanced_return_1(balanced_3_nodes):
+    """Tree with 3 balanced nodes should return balance of 0."""
+    balanced_3_nodes.insert(13)
+    assert balanced_3_nodes.balance() == -1
+
+
+def test_tree_7_nodes_balanced_return_1(balanced_7_nodes):
+    """Tree with 7 balanced nodes should return balance of 0."""
+    assert balanced_7_nodes.balance() == 0

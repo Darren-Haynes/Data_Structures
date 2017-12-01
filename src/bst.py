@@ -56,7 +56,7 @@ class Tree(object):
 
     def _depth(self, curr_node, curr_depth):
         """Recurse until depth is found."""
-        if curr_node == None:
+        if not curr_node:
             return curr_depth
         left_depth = self._depth(curr_node.left, curr_depth + 1)
         right_depth = self._depth(curr_node.right, curr_depth + 1)
@@ -88,18 +88,16 @@ class Tree(object):
         """Return integer balance of the tree sides."""
         if not self.root:
             return "Empty tree has no balance."""
+        return self._depth(self.root.left, 0) - self._depth(self.root.right, 0)
 
-        if self.size() == 1:
-            return 0
-        else:
-            return self._balance(self.root, 0)
-
-    def _balance(self, curr_node, count):
-        """Recurse to calculate balance."""
-        if not curr_node:
-            return count
-
-        return self._balance(curr_node.left, count + 1)
-        return self._balance(curr_node.right, count - 1)
+    def create_balanced_7_node(self):
+        """Create blanced tree with 7 nodes."""
+        self.insert(10)
+        self.insert(5)
+        self.insert(15)
+        self.insert(20)
+        self.insert(13)
+        self.insert(3)
+        self.insert(7)
 
 

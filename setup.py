@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='Binary Search Tree',
-    description='Create a weighted graph data structure',
+    description='Create a Binary Search Tree structure',
     package_dir={'': 'src'},
     author='Darren Haynes',
     author_email='dummy-email@zoho.com',
