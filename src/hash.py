@@ -46,7 +46,9 @@ class HashTable(object):
         if len(self.table[idx]) == 1:
             return self.table[idx][0][1]
         else:
-            pass
+            for pair in self.table[idx][0]:
+                if pair[0] == key:
+                    return self.table[idx][0]
 
 
 

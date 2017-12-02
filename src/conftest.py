@@ -11,6 +11,16 @@ def table6():
     return t
 
 
+@pytest.fixture()
+def words_list():
+    """Big ass list of dictionary words."""
+    words = []
+    with open('words.txt', 'r') as f:
+        for line in f:
+            words.append(line.strip())
+
+    return words
+
 # @pytest.fixture()
 # def adt6_no_dups():
     # t.set_table('aaaaaaa', 'bettie')
