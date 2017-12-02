@@ -10,3 +10,14 @@ def table6():
     t = HashTable()
     return t
 
+
+# @pytest.fixture()
+# def adt6_no_dups():
+    # t.set_table('aaaaaaa', 'bettie')
+    # t.set_table('a', 'bettie')
+    # t.set_table('apple', 'bob')
+    # t.set_table('potato', 'fred')
+    # t.set_table('spinach', 'james')
+    # t.set_table('sweet potato', 'jenny')
+# ]
+
