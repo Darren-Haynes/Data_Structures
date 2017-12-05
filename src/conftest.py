@@ -17,6 +17,13 @@ def table6_elf():
     t = HashTable(hash_type='elf')
     return t
 
+@pytest.fixture()
+def table1key():
+    """Table with just 1 key/pair."""
+    t = HashTable()
+    t.set_key('apple', 'chapel')
+    return t
+
 
 @pytest.fixture()
 def words_list():
@@ -32,11 +39,11 @@ def words_list():
 @pytest.fixture()
 def adt6_no_dups():
     t = HashTable()
-    t.set_table('aaaaaa', 'bettie')
-    t.set_table('a', 'bettie')
-    t.set_table('apple', 'bob')
-    t.set_table('potato', 'fred')
-    t.set_table('spinach', 'james')
-    t.set_table('sweet potato', 'jenny')
+    t.set_key('aaaaaa', 'bettie')
+    t.set_key('a', 'bettie')
+    t.set_key('apple', 'bob')
+    t.set_key('potato', 'fred')
+    t.set_key('spinach', 'james')
+    t.set_key('sweet potato', 'jenny')
     return t
 

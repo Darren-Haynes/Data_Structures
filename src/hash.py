@@ -21,14 +21,12 @@ class HashTable(object):
 
     def _additive(self, word):
         """Additive hash. Boo."""
-        print('ADDIITIVES')
         hash = 0
         for char in word:
             hash += ord(char)
         return hash
 
     def _elf(self, key):
-        print('ELF')
         hash = 0
         x = 0
         for i in range(len(key)):
@@ -52,7 +50,7 @@ class HashTable(object):
 
         return False
 
-    def set_table(self, key, value):
+    def set_key(self, key, value):
         """Put value in hash table."""
         if not isinstance(key, str):
             raise TypeError("Key must be a string.")
@@ -73,16 +71,16 @@ class HashTable(object):
             raise KeyError("Key doesn't exist")
 
         if len(self.table[idx]) == 1:
-            if self.table[idx][0][1] == key:
+            if self.table[idx][0][0] == key:
                 return self.table[idx][0][1]
             else:
                 raise KeyError("Key doesn't exist")
         else:
             for pair in self.table[idx]:
                 if pair[0] == key:
-                    return pair[0]
+                    return pair[1]
 
-    def create_random_table(self):
+    def create_random_table(self):  # pragma: no cover
         """Create random table from list of dictionary words."""
         words = []
         with open('words.txt', 'r') as words_file:
@@ -93,17 +91,13 @@ class HashTable(object):
         values = random.sample(words, self.size)
 
         for key, value in zip(keys, values):
-            self.set_table(key, value)
+            self.set_key(key, value)
 
-    def create_specific_table(self):
+    def create_specific_table(self):  # pragma: no cover
         """Create table of length 10 that always has same key, value pairs."""
-        self.set_table('aaaaaa', 'betty')
-        self.set_table('a', 'bettie')
-        self.set_table('apple', 'bob')
-        self.set_table('potato', 'fred')
-        self.set_table('spinach', 'james')
-        self.set_table('sweet potato', 'jenny')
-        # self.set_table('squash', 'tammy')
-        # self.set_table('kale', 'rob')
-        # self.set_table('cucumber', 'rob')
-        # self.set_table('tomatoes', 'rob')
+        self.set_key('aaaaaa', 'betty')
+        self.set_key('a', 'bettie')
+        self.set_key('apple', 'bob')
+        self.set_key('potato', 'fred')
+        self.set_key('spinach', 'james')
+        self.set_key('sweet potato', 'jenny')

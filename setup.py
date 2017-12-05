@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='Binary Search Tree',
-    description='Create a Binary Search Tree structure',
+    name='Hash Table',
+    description='Create a Hash Table',
     package_dir={'': 'src'},
     author='Darren Haynes',
     author_email='dummy-email@zoho.com',
@@ -14,7 +14,7 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'bst=bst:main'
+            'hash=hash:main'
         }
     }
 )
