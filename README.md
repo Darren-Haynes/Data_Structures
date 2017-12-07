@@ -1,28 +1,27 @@
 # Data Structures
 
-### Binary search tree implementation for the Codefellows Python 401 Course
+### Hash Table implementation for the Codefellows Python 401 Course
 
 #### Big 0 Notation
 
-- __Instantiating an empty tree__ = O(n))
-  It is constant time. A tree object is created nothing more.
+- __Instantiating an empty hash table__ = O(1))
+  It is constant time. A hash table object is created nothing more.
 
 
-- __insert()__ = O(n))
- Since this not a balanced binary tree the time complexity is `0(n)`. In the
- case that you have a completey unbalanced tree that is made up of all
- left children or all right children then each node will be checked.
+- ___additive()__ = O(n))
+  The additive hash method is an `O(n)` operation. `n` being the number of words in the hash that need to be looped over.
 
 
-- __depth()__ = O(n)
-  This utilizes a recursive function that checks every node in the tree once.
+- ___elf()__ = O(n)
+The elf hash is also an `O(n)` operation. It contains a single for loop that also iterates over the number of keys in the given string that needs to be hashed.
 
 
-- __search()__ = O(n)
-  Since this is not a balanced every node in the tree may need to be searched
-  to find the value.
+- ___key_exists()__ = O(n)
+  `O(n)` is the worst case scenario if there is a bucket that contains 2 of more key/value pairs. If the bucket contains just 1 key/pair or zero, then its `O(1)`.
 
 
-- __balance()__ = O(n)
+- __get()__ = O(n)
   This utilizes the depth function to carry out its main task. All nodes are
   checked except for the root node.
+
+- __create_random_table()__ = 
