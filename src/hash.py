@@ -27,6 +27,7 @@ class HashTable(object):
         return hash
 
     def _elf(self, key):
+        """Elf hash."""
         hash = 0
         x = 0
         for i in range(len(key)):
@@ -37,7 +38,7 @@ class HashTable(object):
             hash &= ~x
         return (hash & 0x7FFFFFFF)
 
-    def key_exists(self, key, idx):
+    def _key_exists(self, key, idx):
         """If key exists return true, else false."""
         if len(self.table[idx]) == 1:
             if self.table[idx][0][0] == key:
@@ -58,7 +59,7 @@ class HashTable(object):
         hash = self.hash_type(key)
         idx = hash % self.size
 
-        if self.key_exists(key, idx):
+        if self._key_exists(key, idx):
             raise KeyError("Key already exists")
 
         self.table[idx].append((key, value))
