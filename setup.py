@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='Hash Table',
-    description='Create a Hash Table',
+    name='Bubble Sort',
+    description='Bubble sort algorithm',
     package_dir={'': 'src'},
     author='Darren Haynes',
     author_email='dummy-email@zoho.com',
@@ -14,7 +14,7 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'hash=hash:main'
+            'bubble=bubble:main'
         }
     }
 )
