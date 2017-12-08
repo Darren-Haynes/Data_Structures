@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='Linked List',
-    description='Create a Binary Search Tree structure',
+    description='This will contain a number of Data structures',
     package_dir={'': 'src'},
     author='Darren Haynes & Kevin Robinson',
     author_email='dummy-email@zoho.com',
