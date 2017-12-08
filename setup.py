@@ -2,10 +2,10 @@
 from setuptools import setup
 
 setup(
-    name='Linked List',
-    description='This will contain a number of Data structures',
+    name='data-structures',
+    description='Data structure written in Python',
     package_dir={'': 'src'},
-    author='Darren Haynes & Kevin Robinson',
+    author='Darren Haynes',
     author_email='dummy-email@zoho.com',
     py_modules=[],
     install_requires=[],
@@ -15,7 +15,6 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'linked_list=linked_list:main'
         }
     }
 )
