@@ -17,7 +17,7 @@ class LinkedList(object):
         """Instantiate list with option for iterable."""
         self.head = None
         self._size = 0
-        if isinstance(itr, (str, tuple, list)):
+        if isinstance(itr, (str, tuple, list, range)):
             for item in itr:
                 self.push(item)
 
