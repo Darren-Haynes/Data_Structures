@@ -1,10 +1,11 @@
+"""Setup tools."""
 from setuptools import setup
 
 setup(
-    name='Binary Search Tree',
+    name='Linked List',
     description='Create a Binary Search Tree structure',
     package_dir={'': 'src'},
-    author='Darren Haynes',
+    author='Darren Haynes & Kevin Robinson',
     author_email='dummy-email@zoho.com',
     py_modules=[],
     install_requires=[],
@@ -14,7 +15,7 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'bst=bst:main'
+            'linked_list=linked_list:main'
         }
     }
 )
