@@ -8,6 +8,7 @@ class Node(object):
         """Instantiate a node."""
         self.left = None
         self.right = None
+        self.parent = None
         self.value = value
 
 
@@ -19,10 +20,16 @@ class Tree(object):
         self.root = None
         self._size = 0
 
+
     def insert(self, data):
         """Insert a node into the tree."""
         if self.root:
             self._insert(data, self.root)
+            b = self.balance()
+            if b == -2:
+                pass
+            if b == 2:
+                pass
         else:
             self.root = Node(data)
             self._size += 1
@@ -33,14 +40,18 @@ class Tree(object):
             if curr_node.left:
                 self._insert(data, curr_node.left)
             else:
-                curr_node.left = Node(data)
+                new_node = Node(data)
+                new_node.parent = curr_node
+                curr_node.left = new_node
                 self._size += 1
 
         if data > curr_node.value:
             if curr_node.right:
                 self._insert(data, curr_node.right)
             else:
-                curr_node.right = Node(data)
+                new_node = Node(data)
+                new_node.parent = curr_node
+                curr_node.right = new_node
                 self._size += 1
 
     def size(self):
@@ -100,4 +111,14 @@ class Tree(object):
         self.insert(3)
         self.insert(7)
 
-
+    def create_unbalanced_9_node(self):
+        """Create unblanced tree with 7 nodes."""
+        self.insert(5)
+        self.insert(2)
+        self.insert(6)
+        self.insert(4)
+        self.insert(7)
+        self.insert(1)
+        self.insert(9)
+        self.insert(3)
+        self.insert(8)
