@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='Bubble Sort',
-    description='Bubble sort algorithm',
+    name='Insertion Sort',
+    description='Insertion sort algorithm',
     package_dir={'': 'src'},
     author='Darren Haynes',
     author_email='dummy-email@zoho.com',
