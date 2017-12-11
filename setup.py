@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name='Insertion Sort',
-    description='Insertion sort algorithm',
+    name='Merge Sort',
+    description='Merge sort algorithm',
     package_dir={'': 'src'},
     author='Darren Haynes',
     author_email='dummy-email@zoho.com',
