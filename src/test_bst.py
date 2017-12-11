@@ -105,22 +105,6 @@ def test_balanced_tree_with_3_nodes_has_depth_one(balanced_3_nodes):
     assert balanced_3_nodes.depth() == 1
 
 
-def test_unbalanced_left_3_nodes_depth_is_two(empty_t):
-    """Tree with 3 nodes down left side only depth should be 2."""
-    empty_t.insert(10)
-    empty_t.insert(8)
-    empty_t.insert(6)
-    assert empty_t.depth() == 2
-
-
-def test_unbalanced_right(empty_t):
-    """Tree with 3 nodes down right side only depth should be 2."""
-    empty_t.insert(10)
-    empty_t.insert(12)
-    empty_t.insert(14)
-    assert empty_t.depth() == 2
-
-
 def test_tree_with_one_leaf_node_right_of_left_depth(balanced_3_nodes):
     """Balanced tree with 4 nodes and 4th leaf node is on left side of tree
     and right of parent has depth of 2."""
