@@ -8,6 +8,7 @@ class Node(object):
         """Initiate Node instance."""
         self.value = value
         self.children = {}
+        self.parent = None
         self.end = False
 
 
@@ -20,7 +21,7 @@ class Trie(object):
         self._size = 0
         if itr:
             if not isinstance(itr, (list, tuple, set)):
-                raise TypeError('Must use iterable of strings.')
+                raise TypeError('Must use itterable of strings.')
             else:
                 for word in itr:
                     self.insert(word)
@@ -35,6 +36,7 @@ class Trie(object):
                 step = step.children[i]
             else:
                 step.children[i] = Node(i)
+                step.children[i].parent = step
                 step = step.children[i]
         step.end = True
         self._size += 1
@@ -57,3 +59,20 @@ class Trie(object):
     def size(self):
         """Return number of words in trie tree."""
         return self._size
+
+    def remove(self, string):
+        """Remove string from trie tree."""
+        if not isinstance(string, str):
+            raise TypeError('Must provide a string.')
+        if not self.contains(string):
+            raise ValueError('Word does not exist in tree.')
+        step = self.root
+        for i in string:
+            if i in step.children:
+                step = step.children[i]
+        if step.end is True:
+            while len(step.children) < 2:
+                last = step
+                step = step.parent
+            step.children.pop(last.value)
+            return

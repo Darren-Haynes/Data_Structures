@@ -53,5 +53,5 @@ def empty_trie():
 @pytest.fixture
 def trie_3():
     """Create trie with 3 words passed in iterable."""
-    t = Trie(['pototo', 'potatoes', 'pot'])
+    t = Trie(['potato', 'potatoes', 'pot'])
     return t
