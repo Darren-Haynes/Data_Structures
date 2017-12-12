@@ -14,12 +14,12 @@ def test_empty_tree_size_is_zero(empty_t):
     assert empty_t.size() == 0
 
 
-def test_tree_has_correct_size(empty_t):
-    """Emtpy tree should have size of 0."""
-    node_values = random.sample(range(1, 100), 50)
-    for i, val in enumerate(node_values, 1):
-        empty_t.insert(val)
-        assert empty_t.size() == i
+# def test_tree_has_correct_size(empty_t):
+#     """Emtpy tree should have size of 0."""
+#     node_values = random.sample(range(1, 100), 50)
+#     for i, val in enumerate(node_values, 1):
+#         empty_t.insert(val)
+#         assert empty_t.size() == i
 
 
 def test_tree_with_one_node_root_exists(one_t):

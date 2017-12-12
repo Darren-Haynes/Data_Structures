@@ -61,13 +61,10 @@ class Tree(object):
         """Return number of nodes in tree."""
         return self._size
 
-    def depth(self, node=None):
+    def depth(self):
         """Return depth of the tree."""
         if not self.root:
             return "Empty tree has no depth."
-
-        if node:
-            return self._depth(node, -1)
         return self._depth(self.root, -1)
 
     def _depth(self, curr_node, curr_depth):
@@ -108,10 +105,9 @@ class Tree(object):
                 return "Empty tree has no balance."""
             return self._depth(self.root.left, 0) - self._depth(self.root.right, 0)
         return self._depth(node.left, 0) - self._depth(node.right, 0)
-        # return self.depth(node.left) - self.depth(node.right)
 
     def _right_rotation(self, node):
-        """Opperate a right rotation to balance bst."""
+        """Operate a right rotation to balance bst."""
         if node.parent == self.root:
             self.root.left = node.right
             if self.root.left:
