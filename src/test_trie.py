@@ -34,7 +34,7 @@ def test_trie_instatiates_with_size_zero(empty_trie):
 def test_non_iter_passed_to_trie_raises_error():
     """Trie instantiated with string as iter raises Value."""
     with pytest.raises(TypeError):
-        t = Trie('word')
+        Trie('word')
 
 
 def test_valid_iter_passed_increases_trie_size(trie_3):
@@ -59,3 +59,40 @@ def test_contains_raises_error(empty_trie):
     """Contain method should raise type error if passed non string."""
     with pytest.raises(TypeError):
         empty_trie.contains(1)
+
+
+def test_contains_finds_only_word(empty_trie):
+    """Search should find word if only word in trie."""
+    empty_trie.insert('spectacular')
+    assert empty_trie.contains('spectacular')
+
+
+def test_contains_doesnt_find_only_word(empty_trie):
+    """Contain shouldn't find word not in trie."""
+    empty_trie.insert('bonanza')
+    assert not empty_trie.contains('absent')
+
+
+def test_contains_doesnt_find_only_word_if_similar(empty_trie):
+    """Contain shouldn't find word not in trie."""
+    empty_trie.insert('bonanza')
+    assert not empty_trie.contains('bonanze')
+
+
+def test_contains_finds_one_of_3_similar_words(trie_3):
+    """Trie with 3 similar words finds all 3 words."""
+    words = ['pototo', 'potatoes', 'pot']
+    for word in words:
+        assert trie_3.contains(word)
+
+
+def test_partial_match_returns_false(trie_3):
+    """If word is partial match of another word, contains returns false."""
+    assert not trie_3.contains('pots')
+
+
+def test_size_method_returns_actual_size(empty_trie):
+    """Trie size should increase by 1 for every word inserted."""
+    for i in range(1, 51):
+        empty_trie.insert(FAKE.word())
+        assert empty_trie.size() == i
