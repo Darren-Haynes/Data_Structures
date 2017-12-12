@@ -1,11 +1,12 @@
-"""Bubble sort."""
+"""Implement a bubble sort algorithm."""
 
 
-def bubble_sort(lst):
-    """Bubble sort algorithm."""
-    dict_view = 
-    lst_copy = lst[:]
-    new = lst[:2]
-    for i in range(len(lst - 1)):
-        if 
+def bubble_sort(arr):
+    """Sort iterable from smallest to largest."""
+    l = len(arr)
+    for i in range(l):
+        for i in range(l - 1):
+            if arr[i] > arr[i + 1]:
+                arr[i], arr[i + 1] = arr[i + 1], arr[i]
+    return arr
 
