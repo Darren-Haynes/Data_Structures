@@ -2,6 +2,7 @@
 
 import pytest
 from hash import HashTable
+from trie import Trie
 
 
 @pytest.fixture()
@@ -31,6 +32,7 @@ def words_list():
 
 @pytest.fixture()
 def adt6_no_dups():
+    """Hash with 6 buckets and each bucket has one value."""
     t = HashTable()
     t.set_table('aaaaaa', 'bettie')
     t.set_table('a', 'bettie')
@@ -40,3 +42,16 @@ def adt6_no_dups():
     t.set_table('sweet potato', 'jenny')
     return t
 
+
+@pytest.fixture
+def empty_trie():
+    """Create trie with root node."""
+    t = Trie()
+    return t
+
+
+@pytest.fixture
+def trie_3():
+    """Create trie with 3 words passed in iterable."""
+    t = Trie(['pototo', 'potatoes', 'bananas'])
+    return t
