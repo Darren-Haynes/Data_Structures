@@ -3,8 +3,12 @@
 A collection of data structures assignments as part of the CodeFellows Python 401 course
 [CodeFellows.com](https://codefellows.com "Codefellows Homepage")
 
+<br />
+
 ## Data Structure 1: Linked List
 Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
+
+<br />
 
 ## Data Structure 2: Stack
 Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
@@ -15,6 +19,8 @@ Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robi
 | __push()__ | `0(1)` | You simply insert something into the head of the stack and now point to the previous head. |
 | __pop()__ | `0(1)` | You simply remove the current head and shift the pointer to the new head that replaces it. |
 | __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push` and `pop` of the list (incremented and decremented) the size is stored in a variable. |
+
+<br />
 
 ## Data Structure 3: Doubly Link List
 Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
@@ -28,3 +34,16 @@ Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robi
 | __pop()__ | `0(1)` | Removes head and pointers to it. Restablish new head. All simple `0(1) operations. |
 | __remove()__ | `0(n)` | Worst case is `0(n)` since remove may need to travers the whole list if the item to remove is the last item in list, or not in the list at all. |
 | __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push`, `pop`, `shift`, `append`, `remove` of the list (incremented and decremented) the size is stored in a variable. |
+
+<br />
+
+## Data Structure 4: Queue
+Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
+
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __enqueue()__ | `0(1)` | You simply insert something into the back of the queue and adjust pointers. |
+| __dequeue()__ | `0(1)` | You simply remove the current front and adjust the pointers. |
+| __peek()__ | `0(1)` | A simple operation, just check if a node is at the front and return it's value if there is one. |
+| __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push` and `pop` of the list (incremented and decremented) the size is stored in a variable. |
