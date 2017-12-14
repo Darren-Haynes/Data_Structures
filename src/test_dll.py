@@ -41,8 +41,14 @@ def test_pop_empty_raises_error(dll_no_nodes):
         dll_no_nodes.pop()
 
 
-def test_pop_returns_head_value(dll_three_nodes):
-    """Pop should return the head node."""
+def test_pop_single_node_returns_value(dll_no_nodes):
+    """Pop only node in list should return that nodes value."""
+    dll_no_nodes.push('a')
+    assert dll_no_nodes.pop() == 'a'
+
+
+def test_pop_list_3_nodes_returns_head_value(dll_three_nodes):
+    """Pop should return the head node if more than 1 node in list."""
     head_val = dll_three_nodes.head.val
     assert dll_three_nodes.pop() == head_val
 
@@ -57,6 +63,12 @@ def test_shift_returns_tail_value(dll_three_nodes):
     """Shift should return value of the tail."""
     tail_val = dll_three_nodes.tail.val
     assert dll_three_nodes.shift() == tail_val
+
+
+def test_shift_single_node_returns_nodes_value(dll_no_nodes):
+    """If one node in list, shift should return that node's value."""
+    dll_no_nodes.push('a')
+    assert dll_no_nodes.shift() == 'a'
 
 
 def test_remove_removes_from_head(dll_three_nodes):
