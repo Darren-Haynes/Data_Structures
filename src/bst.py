@@ -1,5 +1,7 @@
 """Binary Search Tree."""
 
+from stack import Stack
+
 
 class Node(object):
     """Binary tree node."""
@@ -19,7 +21,7 @@ class Tree(object):
         """Initiate a binary search tree."""
         self.root = None
         self._size = 0
-        if isinstance(iterable, (list, tuple)):
+        if isinstance(iterable, (list, tuple, set)):
             for num in iterable:
                 self.insert(num)
 
@@ -103,8 +105,25 @@ class Tree(object):
             node = self.root
             if not node:
                 return "Empty tree has no balance."""
-            return self._depth(self.root.left, 0) - self._depth(self.root.right, 0)
+            return self._depth(self.root.left, 0) \
+                - self._depth(self.root.right, 0)
         return self._depth(node.left, 0) - self._depth(node.right, 0)
+
+    def in_order(self):
+        """Traverse the bst and yield node values in order."""
+        if self.root is None:
+            raise ValueError("Tree is empty")
+
+        stack = Stack()
+        curr = self.root
+        while curr or stack:
+            if curr:
+                stack.push(curr)
+                curr = curr.left
+            else:
+                curr = stack.pop()
+                yield curr.value
+                curr = curr.right
 
     def _right_rotation(self, node):
         """Operate a right rotation to balance bst."""
