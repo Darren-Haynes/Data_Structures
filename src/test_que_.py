@@ -3,6 +3,7 @@ import pytest
 
 
 def test_enqueue_adds_to_front_and_back_on_empty(queue_no_nodes):
+    """Back and front of queue should equal only node in queue."""
     queue_no_nodes.enqueue('a')
     assert queue_no_nodes.front.value == 'a'
     assert queue_no_nodes.back.value == 'a'
