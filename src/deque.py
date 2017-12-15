@@ -80,15 +80,13 @@ class Deque(object):
         """Return the next value that would be returned by pop."""
         if self.end:
             return self.end.value
-        else:
-            return None
+        return None
 
     def peekleft(self):
         """Return the next value that would be returned by popleft."""
         if self.front:
             return self.front.value
-        else:
-            return None
+        return None
 
     def size(self):
         """Return the count of items in the queue."""
