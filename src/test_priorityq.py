@@ -132,7 +132,7 @@ def test_pop_entire_q_returns_correct_values(empty_q):
 
 def test_peek_empty_q_returns_message(empty_q):
     """Peek empty q prints empty q message."""
-    assert empty_q.peek() == "Empty queue, nothing to see."
+    assert not empty_q.peek()
 
 
 def test_peek_sees_highest_value_in_q(empty_q):
