@@ -48,6 +48,7 @@ Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robi
 | __peek()__ | `0(1)` | A simple operation, just check if a node is at the front and return it's value if there is one. |
 | __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push` and `pop` of the list (incremented and decremented) the size is stored in a variable. |
 
+<br />
 ## Data Structure 5: Deque
 Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
 
@@ -61,4 +62,16 @@ Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robi
 | __pop()__ | `0(1)` | Removes end and pointers to it. All simple `0(1) operations. |
 | __popleft()__ | `0(1)` | Removes start and pointers to it. All simple `0(1) operations. |
 | __size()__ | `0(1)` | Size is incremented and decremented with each append and pop. So its just accessing a variable containing the size. |
+
+<br />
+
+## Data Structure 5: Priority Queue
+Author: Darren Haynes
+
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __insert()__ | `0(1)` | In this case, the priority queue uses the python dictionary as its datastructure. The insert method utilizes the dictionary `setter` which is an `0(1)` operation. |
+| __pop()__ | `0(1)` | This utilizes the python dictionary `get` method which is an `0(1) operations. |
+| __peek()__ | `0(1)` | This also utilizes the python dictionary `get` method along with the list `get` (by index) method. Both an `0(1) operations. |
 
