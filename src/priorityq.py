@@ -8,20 +8,28 @@ class PriorityQ(object):
         """Instantiate an empty queue."""
         self.queue = {}
         self._highest = False
+        self._lowest = 0
 
-    def insert(self, val, priority=0):
+    def insert(self, val, priority=None):
         """Insert a value into the queue."""
+
+        if priority is None:
+            priority = self._lowest
+
         if not isinstance(priority, (int, float)):
-            raise TypeError("Priority must be an integer")
+            raise TypeError("Priority must be an number")
 
         if priority in self.queue:
             self.queue[priority].append(val)
-        else:
-            if not self.queue:
-                self._highest = priority
-            self.queue[priority] = [val]
-            if priority > self._highest:
-                self._highest = priority
+            return
+
+        if priority < self._lowest:
+            self._lowest = priority
+        elif priority > self._highest:
+            self._highest = priority
+
+        self.queue[priority] = [val]
+        return
 
     def pop(self):
         """Pop highest priority value from the q."""
