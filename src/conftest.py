@@ -37,3 +37,30 @@ def queue_three_nodes():
     new_queue.enqueue(2)
     new_queue.enqueue(3)
     return new_queue
+
+
+@pytest.fixture
+def deque_no_nodes():
+    """Creat empty deque."""
+    from deque import Deque
+    new_deque = Deque()
+    return new_deque
+
+
+@pytest.fixture
+def deque_append_one():
+    """Create deque with one node appended."""
+    from deque import Deque
+    d = Deque()
+    d.appendleft('a')
+    return d
+
+
+@pytest.fixture
+def deque_append_two():
+    """Create deque with 2 nodes appended."""
+    from deque import Deque
+    d = Deque()
+    d.appendleft('a')
+    d.appendleft('b')
+    return d

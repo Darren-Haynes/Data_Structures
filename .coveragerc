@@ -1,0 +1,5 @@
+[run]
+omit = .venv/*
+       src/test*
+       src/conftest.py
+source = src
