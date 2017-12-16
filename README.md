@@ -63,6 +63,8 @@ Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robi
 | __popleft()__ | `0(1)` | Removes start and pointers to it. All simple `0(1) operations. |
 | __size()__ | `0(1)` | Size is incremented and decremented with each append and pop. So its just accessing a variable containing the size. |
 
+<br />
+
 ## Data Structure 5: Priority Queue
 Author: Darren Haynes
 
@@ -71,5 +73,5 @@ Author: Darren Haynes
 |:---:|:---:| --- |
 | __insert()__ | `0(1)` | In this case, the priority queue uses the python dictionary as its datastructure. The insert method utilizes the dictionary `setter` which is an `0(1)` operation. |
 | __pop()__ | `0(1)` | This utilizes the python dictionary `get` method which is an `0(1) operations. |
-| __pop()__ | `0(1)` | This also utilizes the python dictionary `get` method which is an `0(1) operations. |
+| __peek()__ | `0(1)` | This also utilizes the python dictionary `get` method along with the list `get` (by index) method. Both an `0(1) operations. |
 
