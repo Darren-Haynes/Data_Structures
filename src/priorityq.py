@@ -10,8 +10,8 @@ class PriorityQ(object):
         self._highest = False
 
     def insert(self, val, priority=0):
-        """."""
-        if not isinstance(priority, int):
+        """Insert a value into the queue."""
+        if not isinstance(priority, (int, float)):
             raise TypeError("Priority must be an integer")
 
         if priority in self.queue:
@@ -40,5 +40,5 @@ class PriorityQ(object):
     def peek(self):
         """See what the highest priority value is in the q."""
         if not self.queue:
-            return "Empty queue, nothing to see."
+            return
         return self.queue[self._highest][0]
