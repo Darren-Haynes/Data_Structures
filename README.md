@@ -47,3 +47,18 @@ Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robi
 | __dequeue()__ | `0(1)` | You simply remove the current front and adjust the pointers. |
 | __peek()__ | `0(1)` | A simple operation, just check if a node is at the front and return it's value if there is one. |
 | __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push` and `pop` of the list (incremented and decremented) the size is stored in a variable. |
+
+## Data Structure 5: Deque
+Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
+
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __appendleft()__ | `0(1)` | You simply insert something into the start of the deque and adjust pointers. |
+| __append()__ | `0(1)` | You simply insert something into the end of the deque and adjust pointers. |
+| __peekleft()__ | `0(1)` | Just take a peek at the start node. |
+| __peek()__ | `0(1)` | Just take a peek at the end node. |
+| __pop()__ | `0(1)` | Removes end and pointers to it. All simple `0(1) operations. |
+| __popleft()__ | `0(1)` | Removes start and pointers to it. All simple `0(1) operations. |
+| __size()__ | `0(1)` | Size is incremented and decremented with each append and pop. So its just accessing a variable containing the size. |
+
