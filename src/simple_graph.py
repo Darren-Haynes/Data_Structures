@@ -2,6 +2,7 @@
 import random
 import string
 
+
 class SimpleGraph(object):
     """Simple Graph Object."""
 
@@ -31,11 +32,11 @@ class SimpleGraph(object):
     def edges(self):
         """Return all edges in the graph."""
         all_edges = []
-        for edges in list(self.graph.values()):
-            for edge in edges:
-                if edge not in all_edges:
-                    all_edges.append(edge)
-        return tuple(all_edges)
+        for node in self.graph:
+            for edge in self.graph[node]:
+                all_edges.append((node, edge))
+
+        return all_edges
 
     def del_node(self, val):
         """If node in graph, delete it."""
@@ -78,7 +79,7 @@ class SimpleGraph(object):
 
         return val2 in self.graph[val1] or val1 in self.graph[val2]
 
-    def random_ascii_char(self):
+    def random_ascii_char(self):  # pragma: no cover
         """Return random upper case ascii char between 'A' and  'J'."""
         return random.choice(string.ascii_uppercase[:10])
 

@@ -1,63 +1,86 @@
 # Data Structures
 
-### Simple unweighted directed graph implementation for the Codefellows Python 401 Course
+A collection of data structures assignments as part of the CodeFellows Python 401 course
+[CodeFellows.com](https://codefellows.com "Codefellows Homepage")
 
-#### Implentation
-A python dictionary is used to store the nodes. The key is name of the node,
-the value is the node it points to. Example of the graph data:
-```
-{
-    'A': ['B', 'C', 'D'],
-    B: ['C'],
-    C: ['D', 'E'].
-    D: [],
-    E: []
-}
-```
-#### A few things to note:
-- 2 nodes never point back to each other. But one node can point to multiple
-  nodes.
-- A node can exist without pointing to another node, or having another node
-  point to it. It can stand alone.
+<br />
 
-#### Yo Big 0
+## Data Structure 1: Linked List
+Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
 
-- ***__Instantiating an empty graph__ = O(1)
-  It is constant time. An emtpy dict is created, that's it.
+<br />
 
+## Data Structure 2: Stack
+Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
 
-- __add_node()__ = O(1)
- This method just uses the dict setdefault method.
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __push()__ | `0(1)` | You simply insert something into the head of the stack and now point to the previous head. |
+| __pop()__ | `0(1)` | You simply remove the current head and shift the pointer to the new head that replaces it. |
+| __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push` and `pop` of the list (incremented and decremented) the size is stored in a variable. |
 
+<br />
 
-- __add_edge()__ = O(n)
-  There are several things happening in this method and they are all `O(1)`
-  except for the python list built in method `is item in list` which is `O(n)`
+## Data Structure 3: Doubly Link List
+Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
 
-- __nodes()__ = O(n)
-  The method turns the keys of a dict into a list.
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __push()__ | `0(1)` | Adding a node changes head to the this node and points new node to previous head node. All simple `0(1) operations|
+| __append()__ | `0(1)` | Adding a node changes tail to the this node and points new node to previous tail node. All simple `0(1) operations|
+| __shift()__ | `0(1)` | Removes tail and pointers to it. Restablish new tail. All simple `0(1) operations. |
+| __pop()__ | `0(1)` | Removes head and pointers to it. Restablish new head. All simple `0(1) operations. |
+| __remove()__ | `0(n)` | Worst case is `0(n)` since remove may need to travers the whole list if the item to remove is the last item in list, or not in the list at all. |
+| __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push`, `pop`, `shift`, `append`, `remove` of the list (incremented and decremented) the size is stored in a variable. |
 
+<br />
 
-- __edges()__ = O(n^2)
-  There is a double for loop in this method.
+## Data Structure 4: Queue
+Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
 
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __enqueue()__ | `0(1)` | You simply insert something into the back of the queue and adjust pointers. |
+| __dequeue()__ | `0(1)` | You simply remove the current front and adjust the pointers. |
+| __peek()__ | `0(1)` | A simple operation, just check if a node is at the front and return it's value if there is one. |
+| __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push` and `pop` of the list (incremented and decremented) the size is stored in a variable. |
 
-- __del_node()__ = O(1)
-  This method is very efficient. It uses to dict methods `if key in dict` and
-  `del key in dict`. Both these dict methods are `O(1)`.
+<br />
 
+## Data Structure 5: Deque
+Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
 
-- __del_edge()__ = O(n)
-  Two list methods are utilised: `value in list` and `remove`. These are both
-  `O(n)` operations. They are used independantly of each other, thus we do not
-  get `O(n^2)`.
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __appendleft()__ | `0(1)` | You simply insert something into the start of the deque and adjust pointers. |
+| __append()__ | `0(1)` | You simply insert something into the end of the deque and adjust pointers. |
+| __peekleft()__ | `0(1)` | Just take a peek at the start node. |
+| __peek()__ | `0(1)` | Just take a peek at the end node. |
+| __pop()__ | `0(1)` | Removes end and pointers to it. All simple `0(1) operations. |
+| __popleft()__ | `0(1)` | Removes start and pointers to it. All simple `0(1) operations. |
+| __size()__ | `0(1)` | Size is incremented and decremented with each append and pop. So its just accessing a variable containing the size. |
 
+<br />
 
-- __has_node()__ = O(1)
-  This method is simple and simply returns the boolean output of the dict method `key
-  in dict`.
+## Data Structure 5: Priority Queue
+Author: Darren Haynes
 
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __insert()__ | `0(1)` | In this case, the priority queue uses the python dictionary as its datastructure. The insert method utilizes the dictionary `setter` which is an `0(1)` operation. |
+| __pop()__ | `0(1)` | This utilizes the python dictionary `get` method which is an `0(1) operations. |
+| __peek()__ | `0(1)` | This also utilizes the python dictionary `get` method along with the list `get` (by index) method. Both an `0(1) operations. |
 
-- __adjacent()__ = O(n)
-  The adjacent method makes use of the `value in list` method which is an
-  `O(n)` operation.
+## Data Structure 6: Max Binary Heap
+Author: Darren Haynes
+
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __push()__ | `0(log)n` | We are not using standard list iteration with this binary heap. We check for the position of the parent of each child and swap them if need be. The distance between each child and its parent is halfed as we move closer to the head of the heap. This 'halving' gives us a `0(log)n` operation. |
+| __pop()__ | `0(log)n` | The initial pop is just `0(1)` and the subsequent reordering of the values has a worst case scenario of `0(log)n`, following the same pattern as the push method. |

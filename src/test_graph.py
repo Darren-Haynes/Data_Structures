@@ -57,16 +57,15 @@ def test_all_nodes_are_returned(empty_g):
     assert sorted(empty_g.nodes()) == [i for i in range(20)]
 
 
-def test_all_edges_returned_as_list(empty_g):
+def test_all_edges_returned_correctly_as_list_of_tuples(sample_g):
     """Test that edges() method returns all edges in graph as list."""
-    from random import randint
     edges = []
-    for i in range(100):
-        rand_edge = randint(0, 20)
-        edges.append(rand_edge)
-        rand_val = randint(0, 20)
-        empty_g.add_edge(rand_val, rand_edge)
-    assert sorted(empty_g.edges()) == list(set(edges))
+    a_to_e = 'abcde'
+    for char in a_to_e:
+        for char2 in a_to_e:
+            if char != char2:
+                edges.append((char, char2))
+    assert sorted(sample_g.edges()) == edges
 
 
 def test_del_node_deletes_the_node(empty_g):
@@ -176,3 +175,10 @@ def test_adjacent_raise_keyerror_if_val2_not_in_graph(empty_g):
     with pytest.raises(ValueError):
         empty_g.adjacent('A', 'C')
 
+
+def test_del_node_deletes_nodes_edges(sample_g):
+    """Deleting node from graph, its edges should be deleted also."""
+    sample_g.del_node('a')
+    for node in sample_g.graph:
+        for edge in sample_g.graph[node]:
+            assert edge != 'a'
