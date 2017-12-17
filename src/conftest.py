@@ -88,3 +88,23 @@ def eh():
     """Create empty BinaryHeap."""
     from binary_heap import BinaryHeap
     return BinaryHeap()
+
+
+@pytest.fixture
+def empty_g():
+    """Create an empty graph."""
+    from simple_graph import SimpleGraph
+    return SimpleGraph()
+
+
+@pytest.fixture
+def sample_g():
+    """Create an empty graph."""
+    from simple_graph import SimpleGraph
+    g = SimpleGraph()
+    a_to_e = 'abcde'
+    for char in a_to_e:
+        for char2 in a_to_e:
+            if char != char2:
+                g.add_edge(char2, char)
+    return g
