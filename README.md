@@ -104,3 +104,5 @@ Author: Darren Haynes
 | __has_node()__ | `0(1)` | The dictionary `get` method is used to find if node exists in graph.
 | __neighbors()__ | `0(1)` | The dictionary `get` method is used to find the list of edges that may be associated with a node.
 | __adjacent()__ | `0(1)` | The dictionary `get` method is used several times, but only once at a time.
+| __breadth_traversal()__ | `0(n^2)` | Each node has to be iterated over and for each node all of it's edges need to be iterated over.
+| __depth_traversal()__ | `0(n^3)` | Each node has to be iterated over and for each node all of it's edges need to be iterated over. However, each time the edges are iterated over, they are reversed first, which is an additional `0(n)` operation, bumping there overall time complexity to `0(n^3)`
