@@ -16,13 +16,7 @@ class Stack(object):
 
     def pop(self):
         """Pop last value pushed into stack, if stack not empty."""
-        pop_node = self.stack.head
-        if pop_node is None:
-            raise IndexError("No nodes in stack")
-        self.stack.head = pop_node.next_node
-        pop_node.next_node = None
-        self.stack._size -= 1
-        return pop_node.value
+        return self.stack.pop()
 
     def __len__(self):
         """Get number of nodes in list."""
