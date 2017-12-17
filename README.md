@@ -49,6 +49,7 @@ Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robi
 | __\_\_len()\_\___ | `0(1)` | Since the size of the stack is calculated with each `push` and `pop` of the list (incremented and decremented) the size is stored in a variable. |
 
 <br />
+
 ## Data Structure 5: Deque
 Authors: Darren Haynes & [Kevin Robinson](https://github.com/Zan4567 "Kevin Robinson Github Profile Page")
 
@@ -75,3 +76,11 @@ Author: Darren Haynes
 | __pop()__ | `0(1)` | This utilizes the python dictionary `get` method which is an `0(1) operations. |
 | __peek()__ | `0(1)` | This also utilizes the python dictionary `get` method along with the list `get` (by index) method. Both an `0(1) operations. |
 
+## Data Structure 6: Max Binary Heap
+Author: Darren Haynes
+
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __push()__ | `0(log)n` | We are not using standard list iteration with this binary heap. We check for the position of the parent of each child and swap them if need be. The distance between each child and its parent is halfed as we move closer to the head of the heap. This 'halving' gives us a `0(log)n` operation. |
+| __pop()__ | `0(log)n` | The initial pop is just `0(1)` and the subsequent reordering of the values has a worst case scenario of `0(log)n`, following the same pattern as the push method. |

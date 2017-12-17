@@ -81,3 +81,10 @@ def q10():
     for i in range(1, 10):
         q.insert('a', i)
     return q
+
+
+@pytest.fixture
+def eh():
+    """Create empty BinaryHeap."""
+    from binary_heap import BinaryHeap
+    return BinaryHeap()
