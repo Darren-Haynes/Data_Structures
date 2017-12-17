@@ -77,7 +77,7 @@ class SimpleGraph(object):
         if val1 not in self.graph or val2 not in self.graph:
             raise ValueError("Node doesn't exist.")
 
-        return val2 in self.graph[val1] or val1 in self.graph[val2]
+        return val1 in self.graph and val2 in self.graph[val1]
 
     def random_ascii_char(self):  # pragma: no cover
         """Return random upper case ascii char between 'A' and  'J'."""
