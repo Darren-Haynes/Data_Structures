@@ -76,6 +76,8 @@ Author: Darren Haynes
 | __pop()__ | `0(1)` | This utilizes the python dictionary `get` method which is an `0(1) operations. |
 | __peek()__ | `0(1)` | This also utilizes the python dictionary `get` method along with the list `get` (by index) method. Both an `0(1) operations. |
 
+<br />
+
 ## Data Structure 6: Max Binary Heap
 Author: Darren Haynes
 
@@ -84,3 +86,21 @@ Author: Darren Haynes
 |:---:|:---:| --- |
 | __push()__ | `0(log)n` | We are not using standard list iteration with this binary heap. We check for the position of the parent of each child and swap them if need be. The distance between each child and its parent is halfed as we move closer to the head of the heap. This 'halving' gives us a `0(log)n` operation. |
 | __pop()__ | `0(log)n` | The initial pop is just `0(1)` and the subsequent reordering of the values has a worst case scenario of `0(log)n`, following the same pattern as the push method. |
+
+<br />
+
+## Data Structure 6: Simple Graph
+Author: Darren Haynes
+
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __add_node()__ | `0(1)` | Adding a node to the graph uses the python dictionary `setter`. |
+| __add_edge()__ | `0(1)` | Adding a node to the graph uses the python dictionary `setter`. |
+| __nodes()__ | `0(n)` | All the dictionary (graph's) keys are iterated over to return a list of all nodes.
+| __edges()__ | `0(n^2)` | To get all the nodes and their edges we need to iterate over the dictionary keys and then iterate over each value (which is a list). Thus we have a nested loop.
+| __del_node()__ | `0(n^2)` | To delete the node is a simple `0(1)` operation using the dictionary `del` method. However to delete all the edges pointing to that node we need to iterate over all the other nodes and then iterate over the edges of each of those nodes to find any edges that need to be deleted. This requires a double for a loop and a time complexity of `0(n^2)`.
+| __del_edge()__ | `0(n)` | The edge that get's deleted is an element in a list. The list has to reorder itself after the deletion. 
+| __has_node()__ | `0(1)` | The dictionary `get` method is used to find if node exists in graph.
+| __neighbors()__ | `0(1)` | The dictionary `get` method is used to find the list of edges that may be associated with a node.
+| __adjacent()__ | `0(1)` | The dictionary `get` method is used several times, but only once at a time.
