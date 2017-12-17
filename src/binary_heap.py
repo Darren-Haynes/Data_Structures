@@ -32,8 +32,13 @@ class BinaryHeap(object):
         while self.heap[child_idx - 1]:
             parent_val = self.heap[parent_idx]
             child_val = self.heap[child_idx]
+
+            if parent_idx == child_val:
+                raise ValueError("Heap only accepts unique values")
+
             if parent_val > child_val:
                 break
+
             self.heap[child_idx] = parent_val
             self.heap[parent_idx] = child_val
             child_idx = self.heap.index(child_val)
@@ -44,7 +49,11 @@ class BinaryHeap(object):
         if not isinstance(val, (str, int, float)):
             raise TypeError("Value must be a number or a string")
 
+        if len(self.heap) == 2 and val == self.heap[1]:
+            raise ValueError("Heap only accepts unique values")
+
         self.heap.append(val)
+
         if len(self.heap) > 2:
             self._prioritize_after_push(val)
 

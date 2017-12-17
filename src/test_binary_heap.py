@@ -104,3 +104,22 @@ def test_heap_instaniated_with_bool():
     from binary_heap import BinaryHeap
     with pytest.raises(TypeError):
         BinaryHeap(False)
+
+
+def test_unique_values_raises_error_if_1_value_in_list():
+    """If a value is pushed into heap that already exists, error is raised."""
+    from binary_heap import BinaryHeap
+    b = BinaryHeap()
+    b.push(1)
+    with pytest.raises(ValueError):
+        b.push(1)
+
+
+def test_unique_values_raises_error_if_more_than_2_values_in_list():
+    """If a value is pushed into heap that already exists, error is raised."""
+    from binary_heap import BinaryHeap
+    b = BinaryHeap()
+    b.push(1)
+    b.push(2)
+    with pytest.raises(ValueError):
+        b.push(1)
