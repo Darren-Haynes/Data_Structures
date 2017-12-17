@@ -9,6 +9,11 @@ class BinaryHeap(object):
     def __init__(self, iterable=None):
         """Instantiate heap with None as first index."""
         self.heap = [None]
+
+        if isinstance(iterable, bool):
+            raise TypeError("Heap can only be instantiated with a list, "
+                            "tuple or nothing.")
+
         if iterable:
             if not isinstance(iterable, (tuple, list)):
                 raise TypeError("Heap can only be instantiated with a list, "
@@ -80,10 +85,13 @@ class BinaryHeap(object):
     def pop(self):
         """Pop value from top of the heap."""
         if len(self.heap) == 1:
-            return
+            raise IndexError("Empty heap, nothing to pop")
 
-        root_val = self.heap.pop(1)
+        if len(self.heap) == 2:
+            return self.heap.pop()
+
+        root_val = self.heap[1]
         tail_val = self.heap.pop()
-        self.heap.insert(1, tail_val)
+        self.heap[1] = tail_val
         self._prioritize_after_pop(tail_val)
         return root_val

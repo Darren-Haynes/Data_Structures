@@ -53,11 +53,6 @@ def test_same_input_in_different_order_heaps_correctlt(iterable, result):
     assert b.heap == result
 
 
-def test_pop_empty_heap_raises_index_error(eh):
-    """Emtpy heap should raise Index Error."""
-    assert not eh.pop()
-
-
 # @pytest.mark.parametrize('iterable, result', TABLE4)
 def test_pop_returns_value_at_top_of_heap(eh):
     """Pop should return the value at the top of the heap."""
@@ -94,3 +89,18 @@ def test_push_raises_type_error():
     b = BinaryHeap()
     with pytest.raises(TypeError):
         b.push([1, 2, 3])
+
+
+def test_pop_raises_index_error():
+    """Popping from empty heap should raise an index error."""
+    from binary_heap import BinaryHeap
+    b = BinaryHeap()
+    with pytest.raises(IndexError):
+        b.pop()
+
+
+def test_heap_instaniated_with_bool():
+    """If heap is instantiated with a bool, type error should be raised."""
+    from binary_heap import BinaryHeap
+    with pytest.raises(TypeError):
+        BinaryHeap(False)
