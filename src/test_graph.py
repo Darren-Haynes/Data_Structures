@@ -182,3 +182,57 @@ def test_del_node_deletes_nodes_edges(sample_g):
     for node in sample_g.graph:
         for edge in sample_g.graph[node]:
             assert edge != 'a'
+
+
+def test_breadth_raises_key_error(empty_g):
+    """If start node not in graph, raise ValueError."""
+    empty_g.add_edge('A', 'B')
+    with pytest.raises(ValueError):
+        empty_g.breadth_first_traversal('C')
+
+
+def test_breadth_start_node_has_no_edges(empty_g):
+    """If start node has no edges, the node is returned."""
+    empty_g.add_edge('A', 'B')
+    empty_g.breadth_first_traversal('A') == ['A']
+
+
+def test_breadth_not_get_caught_in_cycle(cyclic):
+    """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
+    assert cyclic.breadth_first_traversal('A') == ['A', 'B', 'C']
+
+
+def test_breadth_non_cycle_returns_correct_traversal(non_ref):
+    """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
+    from string import ascii_uppercase as ascii_up
+    assert non_ref.breadth_first_traversal('A') == list(ascii_up[:7])
+
+
+def test_depth_raises_key_error(empty_g):
+    """If start node not in graph, raise ValueError."""
+    empty_g.add_edge('A', 'B')
+    with pytest.raises(KeyError):
+        empty_g.depth_first_traversal('C')
+
+
+def test_depth_start_node_has_no_edges(empty_g):
+    """If start node has no edges, the node is returned."""
+    empty_g.add_edge('A', 'B')
+    empty_g.depth_first_traversal('A') == ['A']
+
+
+def test_depth_not_get_caught_in_cycle(cyclic):
+    """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
+    assert cyclic.depth_first_traversal('A') == ['A', 'B', 'C']
+
+
+def test_depth_non_cycle_returns_correct_traversal(non_ref):
+    """Test traversal doesn't get caught in cyclical loop in a cyclic graph."""
+    correct_result = ['A', 'B', 'D', 'E', 'C', 'F', 'G']
+    assert non_ref.depth_first_traversal('A') == correct_result
+
+
+def test_breadth_returns_no_edge(non_ref):
+    """If node doesn't have edge, return node."""
+    non_ref.add_node('J')
+    assert non_ref.breadth_first_traversal('J') == ['J']

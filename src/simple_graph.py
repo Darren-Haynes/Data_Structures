@@ -136,7 +136,7 @@ class SimpleGraph(object):
         return walked
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     import time
     print("\nCOMPARE BREADTH VS DEPTH TRAVERSAL\n")
     for i in range(5):
