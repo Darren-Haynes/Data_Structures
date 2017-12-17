@@ -108,3 +108,35 @@ def sample_g():
             if char != char2:
                 g.add_edge(char2, char)
     return g
+
+
+@pytest.fixture
+def empty_wg():
+    """Create an empty graph."""
+    from weighted_graph import WeightedGraph
+    return WeightedGraph()
+
+
+@pytest.fixture
+def non_ref():
+    """Create simple non referential graph."""
+    from weighted_graph import WeightedGraph
+    empty_wg = WeightedGraph()
+    empty_wg.add_edge('A', 'B', 5)
+    empty_wg.add_edge('A', 'C', 5)
+    empty_wg.add_edge('B', 'D', 5)
+    empty_wg.add_edge('B', 'E', 5)
+    empty_wg.add_edge('C', 'F', 5)
+    empty_wg.add_edge('C', 'G', 5)
+    return empty_wg
+
+
+@pytest.fixture
+def cyclic():
+    """Create simple cyclic graph."""
+    from weighted_graph import WeightedGraph
+    empty_wg = WeightedGraph()
+    empty_wg.add_edge('A', 'B', 5)
+    empty_wg.add_edge('B', 'C', 5)
+    empty_wg.add_edge('C', 'A', 5)
+    return empty_wg

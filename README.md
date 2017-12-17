@@ -89,7 +89,7 @@ Author: Darren Haynes
 
 <br />
 
-## Data Structure 6: Simple Graph
+## Data Structures 6 & 7: Simple Graph & Weighted Graph
 Author: Darren Haynes
 
 ### Big O Notation
