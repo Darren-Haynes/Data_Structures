@@ -82,22 +82,22 @@ class Tree(object):
         if not self.root:
             return "An empty tree has no values."
         else:
-            found = self._search(self.root, value)
+            found = self._contains(self.root, value)
 
         if found:
             return True
         else:
             return False
 
-    def _search(self, curr_node, value):
+    def _contains(self, curr_node, value):
         """Recurse nodes to find value if it exists."""
         if curr_node.value == value:
             return True
 
         if value < curr_node.value and curr_node.left:
-            return self._search(curr_node.left, value)
+            return self._contains(curr_node.left, value)
         elif value > curr_node.value and curr_node.right:
-            return self._search(curr_node.right, value)
+            return self._contains(curr_node.right, value)
 
     def balance(self, node=None):
         """Return integer balance of the tree sides."""
