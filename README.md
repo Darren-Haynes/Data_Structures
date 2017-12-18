@@ -106,3 +106,18 @@ Author: Darren Haynes
 | __adjacent()__ | `0(1)` | The dictionary `get` method is used several times, but only once at a time.
 | __breadth_traversal()__ | `0(n^2)` | Each node has to be iterated over and for each node all of it's edges need to be iterated over.
 | __depth_traversal()__ | `0(n^3)` | Each node has to be iterated over and for each node all of it's edges need to be iterated over. However, each time the edges are iterated over, they are reversed first, which is an additional `0(n)` operation, bumping there overall time complexity to `0(n^3)`
+
+<br />
+
+## Data Structures 8: Binary Search Tree
+Author: Darren Haynes
+
+### Big O Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __insert()__ | `0(log)n` | Insert moves through the tree to find the place the inserted value needs to go. With each 'move', the size of the tree is halved. |
+| __size()__ | `0(1)` | The size of the tree is incremented and decremented with each insertion and deletion of the node, thus accessing the size is a simple `0(1)`. |
+| __depth()__ | `0(n)` | Each node of the tree is traversed once to find the depth. |
+| __contains()__ | `0(log)n` | As we check each node to see if matches the value, the size of the tree is cut in half with each check. |
+| __balance()__ | `0(n)` | Every node in the tree is checked to establish balance.
+| __in_order()__ | `0(n)` | Every node is visited to find the order.
