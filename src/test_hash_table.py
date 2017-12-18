@@ -21,10 +21,10 @@ def test_incorrect_hash_parameter_raises_error():
         HashTable(hash_type='not_a_hashing_type')
 
 
-def test_set_table_method_raises_error(table6_add):
-    """Key used in set_table method must be a string, else error."""
+def test_set_key_method_raises_error(table6_add):
+    """Key used in set_key method must be a string, else error."""
     with pytest.raises(TypeError):
-        table6_add.set_table(1)
+        table6_add.set_key(1)
 
 
 WORDS6 = [
@@ -42,7 +42,7 @@ def test_addtive_words_filled_all_buckets(key, value, table6_add):
     """Test that additive hash puts 6 words into each of the 6 buckets of a
     list that has just 6 buckets. There should be no collisions.
     """
-    table6_add.set_table(key, value)
+    table6_add.set_key(key, value)
     idx = table6_add._additive(key) % 6
     assert table6_add.table[idx][0][0] == key
 
@@ -51,15 +51,15 @@ def test_addtive_words_filled_all_buckets(key, value, table6_add):
 def test_elf_words_filled_all_buckets(key, value, table6_elf):
     """Test that additive hash puts 6 words into each of the 6 buckets of a
     list that has just 6 buckets. There should be no collisions"""
-    table6_elf.set_table(key, value)
+    table6_elf.set_key(key, value)
     idx = table6_elf._elf(key) % 6
     assert table6_elf.table[idx][0][0] == key
 
 
 def test_2_additive_words_in_same_bucket(table6_add):
     """2 different words with same hash should be in same bucket."""
-    table6_add.set_table('apple', 'bob')
-    table6_add.set_table('papel', 'fred')
+    table6_add.set_key('apple', 'bob')
+    table6_add.set_key('papel', 'fred')
     assert len(table6_add.table[2]) == 2
     assert ('apple', 'bob') in table6_add.table[2]
     assert ('papel', 'fred') in table6_add.table[2]
@@ -67,8 +67,8 @@ def test_2_additive_words_in_same_bucket(table6_add):
 
 def test_2_additive_words_in_same_bucket_others_empty(table6_add):
     """2 different words with same hash; other buckets should be empty."""
-    table6_add.set_table('apple', 'bob')
-    table6_add.set_table('papel', 'fred')
+    table6_add.set_key('apple', 'bob')
+    table6_add.set_key('papel', 'fred')
     for idx in range(6):
         if idx != 2:
             assert not table6_add.table[idx]
@@ -76,7 +76,8 @@ def test_2_additive_words_in_same_bucket_others_empty(table6_add):
 
 def test_get_method_raises_error_if_bucket_exists(adt6_no_dups):
     """Trying to get non existant key from bucket that exist if key not
-    there raises KeyError."""
+    there raises KeyError.
+    """
     with pytest.raises(KeyError):
         adt6_no_dups.get('banana')
 
@@ -99,20 +100,42 @@ WORDS6IDX = [
 @pytest.mark.parametrize('key, idx', WORDS6IDX)
 def test_key_exists_if_bucket_length_is_one(key, idx, adt6_no_dups):
     """Test key exists in bucket that contains only one key/value pair."""
-    assert adt6_no_dups.key_exists(key, idx)
+    assert adt6_no_dups._key_exists(key, idx)
 
 
 def test_key_exists_if_bucket_length_greater_than_one(adt6_no_dups):
     """If bucket has more than one key/value pair it should return true
     if key exists."""
-    adt6_no_dups.set_table('papel', 'hello there')
-    assert adt6_no_dups.key_exists('papel', 2)
+    adt6_no_dups.set_key('papel', 'hello there')
+    assert adt6_no_dups._key_exists('papel', 2)
 
 
 def test_key_not_string_raises_type_error(table6_add):
     """Test set method raises error if key not a string."""
     with pytest.raises(TypeError):
-        table6_add.set_table(1, 2)
+        table6_add.set_key(1, 2)
 
 
-# def test_key_already_exists_raises_key_error()
+def test_key_already_exists_raises_key_error(table1key):
+    """If key exists, KeyError should raise."""
+    with pytest.raises(KeyError):
+        table1key.set_key('apple', 'yummy')
+
+
+def test_get_error_if_bucket_empty(table1key):
+    """Test get key returns error if mapped bucket is empty."""
+    with pytest.raises(KeyError):
+        # import pdb; pdb.set_trace()
+        table1key.get('a')
+
+
+def test_get_for_bucket_with_just_one_key_pair(table1key):
+    """If bucket contains just one key/balue pair get should work."""
+    table1key.set_key('banana', 'hello')
+    assert table1key.get('banana') == 'hello'
+
+
+def test_get_in_collision_bucket(table1key):
+    """If 2 key/pairs in bucket, get should retrieve correct pair."""
+    table1key.set_key('papel', 'hello')
+    assert table1key.get('papel') == 'hello'
