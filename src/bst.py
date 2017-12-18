@@ -187,7 +187,7 @@ class Tree(object):
             else:
                 node = node.parent
 
-    def create_balanced_7_node(self):
+    def create_balanced_7_node(self):  # pragma: no cover
         """Create blanced tree with 7 nodes."""
         self.insert(10)
         self.insert(5)
@@ -197,7 +197,7 @@ class Tree(object):
         self.insert(3)
         self.insert(7)
 
-    def create_unbalanced_9_node(self):
+    def create_unbalanced_9_node(self):  # pragma: no cover
         """Create unblanced tree with 7 nodes."""
         self.insert(5)
         self.insert(2)
