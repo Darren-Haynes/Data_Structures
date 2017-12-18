@@ -51,7 +51,7 @@ def test_insert_not_string_raises_error(empty_trie):
 def test_insert_string_trie_size_increases_correctly(empty_trie):
     """Trie size should increase by 1 for every word inserted."""
     for i in range(1, 51):
-        empty_trie.insert(FAKE.word())
+        empty_trie.insert(str(FAKE.word()))
         assert empty_trie._size == i
 
 
@@ -101,7 +101,7 @@ def test_partial_match_returns_false(trie_3):
 def test_size_method_returns_actual_size(empty_trie):
     """Trie size should increase by 1 for every word inserted."""
     for i in range(1, 51):
-        empty_trie.insert(FAKE.word())
+        empty_trie.insert(str(FAKE.word()))
         assert empty_trie.size() == i
 
 
