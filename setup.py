@@ -1,8 +1,9 @@
+"""Setup tools."""
 from setuptools import setup
 
 setup(
-    name='Hash Table',
-    description='Create a Hash Table',
+    name='data-structures',
+    description='Data structure written in Python',
     package_dir={'': 'src'},
     author='Darren Haynes',
     author_email='dummy-email@zoho.com',
@@ -14,7 +15,6 @@ setup(
     },
     entry_points={
         'console_scripts': {
-            'hash=hash:main'
         }
     }
 )
