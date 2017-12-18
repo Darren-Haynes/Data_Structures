@@ -77,7 +77,7 @@ class Tree(object):
         right_depth = self._depth(curr_node.right, curr_depth + 1)
         return max(left_depth, right_depth)
 
-    def search(self, value):
+    def contains(self, value):
         """Establish if a value exists in tree."""
         if not self.root:
             return "An empty tree has no values."

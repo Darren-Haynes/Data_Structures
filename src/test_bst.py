@@ -3,7 +3,6 @@
 import pytest
 import random
 
-
 def test_tree_initiates_with_empty_root(empty_t):
     """Tree instantiated without iterables should be empty."""
     assert not empty_t.root
@@ -15,11 +14,11 @@ def test_empty_tree_size_is_zero(empty_t):
 
 
 # def test_tree_has_correct_size(empty_t):
-#     """Emtpy tree should have size of 0."""
-#     node_values = random.sample(range(1, 100), 50)
-#     for i, val in enumerate(node_values, 1):
-#         empty_t.insert(val)
-#         assert empty_t.size() == i
+    # """Emtpy tree should have size of 0."""
+    # node_values = random.sample(range(1, 100), 50)
+    # for i, val in enumerate(node_values, 1):
+        # empty_t.insert(val)
+        # assert empty_t.size() == i
 
 
 def test_tree_with_one_node_root_exists(one_t):
@@ -124,19 +123,19 @@ def test_balanced_tree_7_nodes_has_depth_two(balanced_7_nodes):
     assert balanced_7_nodes.depth() == 2
 
 
-def test_empty_tree_search(empty_t):
-    """Empty tree search should return appropriate string message."""
-    empty_t.search(1) == "An empty tree has no values."
+def test_empty_tree_contains(empty_t):
+    """Empty tree contains should return appropriate string message."""
+    empty_t.contains(1) == "An empty tree has no values."
 
 
 def test_value_in_tree_returns_true(balanced_7_nodes):
-    """If value in tree search should return True."""
-    assert balanced_7_nodes.search(7)
+    """If value in tree contains should return True."""
+    assert balanced_7_nodes.contains(7)
 
 
 def test_value_not_in_tree_returns_false(balanced_7_nodes):
-    """If value not in tree search should return false."""
-    assert not balanced_7_nodes.search(4)
+    """If value not in tree contains should return false."""
+    assert not balanced_7_nodes.contains(4)
 
 
 def test_empty_tree_balance_returns_message(empty_t):
