@@ -121,3 +121,17 @@ Author: Darren Haynes
 | __contains()__ | `0(log)n` | As we check each node to see if matches the value, the size of the tree is cut in half with each check. |
 | __balance()__ | `0(n)` | Every node in the tree is checked to establish balance.
 | __in_order()__ | `0(n)` | Every node is visited to find the order.
+
+<br />
+
+##  Data Structure 9: Hash Table
+Author: Darren Haynes
+
+### Big 0 Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __Instantiating an empty hash table__ | `O(1))` | It is constant time. A hash table object is created nothing more. |
+| ___additive()__ | `O(n))` | The additive hash method is an `O(n)` operation. `n` being the number of words in the hash that need to be looped over. |
+| ___elf()__ | `O(n)` | The elf hash is also an `O(n)` operation. It contains a single for loop that also iterates over the number of keys in the given string that needs to be hashed. |
+| ___key_exists()__ | `O(n)` | `O(n)` is the worst case scenario if there is a bucket that contains 2 of more key/value pairs. If the bucket contains just 1 key/pair or zero, then its `O(1)`. |
+| __get()__ | `O(n)` | This utilizes the depth function to carry out its main task. All nodes are checked except for the root node. |
