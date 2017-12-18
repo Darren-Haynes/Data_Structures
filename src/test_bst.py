@@ -1,158 +1,91 @@
 """Tests for the Binary Search Tree."""
 
 import pytest
-from hash import HashTable
+import random
 
-<<<<<<< HEAD
-
-def test_default_hast_table_has_len_6(table6_add):
-    """Default hash table should be Initialized with 6 buckets."""
-    assert len(table6_add.table) == 6
-=======
 def test_tree_initiates_with_empty_root(empty_t):
     """Tree instantiated without iterables should be empty."""
     assert not empty_t.root
->>>>>>> c6508eb296c84c82aae470d888b55dafe388410f
 
 
-def test_default_hash_table_buckets_are_empty(table6_add):
-    """Default initiates to table with 6 empty buckets."""
-    for bucket in table6_add.table:
-        assert not bucket
+def test_empty_tree_size_is_zero(empty_t):
+    """Emtpy tree size should be zero."""
+    assert empty_t.size() == 0
 
 
-<<<<<<< HEAD
-def test_incorrect_hash_parameter_raises_error():
-    """Test incorrect hash_type passed to constructor raises ValueError."""
-    with pytest.raises(ValueError):
-        HashTable(hash_type='not_a_hashing_type')
-=======
 # def test_tree_has_correct_size(empty_t):
     # """Emtpy tree should have size of 0."""
     # node_values = random.sample(range(1, 100), 50)
     # for i, val in enumerate(node_values, 1):
         # empty_t.insert(val)
         # assert empty_t.size() == i
->>>>>>> c6508eb296c84c82aae470d888b55dafe388410f
 
 
-def test_set_key_method_raises_error(table6_add):
-    """Key used in set_key method must be a string, else error."""
-    with pytest.raises(TypeError):
-        table6_add.set_key(1)
+def test_tree_with_one_node_root_exists(one_t):
+    """Root of tree should exist if it has one node."""
+    assert one_t.root
 
 
-WORDS6 = [
-    ('aaaaaaa', 'bettie'),
-    ('a', 'bettie'),
-    ('apple', 'bob'),
-    ('potato', 'fred'),
-    ('spinach', 'james'),
-    ('sweet potato', 'jenny'),
-]
+def test_tree_with_one_node_root_no_children(one_t):
+    """Tree with one node, root should have no kids."""
+    assert not one_t.root.left
+    assert not one_t.root.right
 
 
-@pytest.mark.parametrize('key, value', WORDS6)
-def test_addtive_words_filled_all_buckets(key, value, table6_add):
-    """Test that additive hash puts 6 words into each of the 6 buckets of a
-    list that has just 6 buckets. There should be no collisions.
-    """
-    table6_add.set_key(key, value)
-    idx = table6_add._additive(key) % 6
-    assert table6_add.table[idx][0][0] == key
+def test_tree_with_one_node_has_correct_value(one_t):
+    """If one node in tree, root node should have inserted value."""
+    assert one_t.root.value == 10
 
 
-@pytest.mark.parametrize('key, value', WORDS6)
-def test_elf_words_filled_all_buckets(key, value, table6_elf):
-    """Test that additive hash puts 6 words into each of the 6 buckets of a
-    list that has just 6 buckets. There should be no collisions"""
-    table6_elf.set_key(key, value)
-    idx = table6_elf._elf(key) % 6
-    assert table6_elf.table[idx][0][0] == key
+def test_left_sided_tree_with_two_nodes_root_has_child(empty_t):
+    """If 2 nodes in left sided tree, root points to left child only."""
+    empty_t.insert(10)
+    empty_t.insert(5)
+    assert empty_t.root.left
+    assert not empty_t.root.right
 
 
-def test_2_additive_words_in_same_bucket(table6_add):
-    """2 different words with same hash should be in same bucket."""
-    table6_add.set_key('apple', 'bob')
-    table6_add.set_key('papel', 'fred')
-    assert len(table6_add.table[2]) == 2
-    assert ('apple', 'bob') in table6_add.table[2]
-    assert ('papel', 'fred') in table6_add.table[2]
+def test_right_sided_tree_with_two_nodes_root_has_child(empty_t):
+    """If 2 nodes in right sided tree, root points to right child only."""
+    empty_t.insert(10)
+    empty_t.insert(15)
+    assert empty_t.root.right
+    assert not empty_t.root.left
 
 
-def test_2_additive_words_in_same_bucket_others_empty(table6_add):
-    """2 different words with same hash; other buckets should be empty."""
-    table6_add.set_key('apple', 'bob')
-    table6_add.set_key('papel', 'fred')
-    for idx in range(6):
-        if idx != 2:
-            assert not table6_add.table[idx]
+def test_balanced_tree_with_3_nodes_root_has_2_kids(balanced_3_nodes):
+    """Test balanced tree with 3 nodes, root has left and right kids."""
+    assert balanced_3_nodes.root.right
+    assert balanced_3_nodes.root.left
 
 
-def test_get_method_raises_error_if_bucket_exists(adt6_no_dups):
-    """Trying to get non existant key from bucket that exist if key not
-    there raises KeyError.
-    """
-    with pytest.raises(KeyError):
-        adt6_no_dups.get('banana')
+def test_balanced_tree_with_3_nodes_childens_values(balanced_3_nodes):
+    """Balanced tree with 3 nodes, check root children's values are correct."""
+    assert balanced_3_nodes.root.right.value == 15
+    assert balanced_3_nodes.root.left.value == 5
 
 
-def test_get_method_raises_error_if_bucket_empty(adt6_no_dups):
-    """Raise key Error if hash index doesn't exist."""
-    with pytest.raises(KeyError):
-        adt6_no_dups.get('banana')
-
-WORDS6IDX = [
-    ('aaaaaa', 0),
-    ('a', 1),
-    ('apple', 2),
-    ('potato', 3),
-    ('spinach', 4),
-    ('sweet potato', 5)
-]
+def test_balanced_tree_with_7_nodes_is_correct(balanced_7_nodes):
+    """Balanced tree with 5 nodes, nodes in right place."""
+    root = balanced_7_nodes.root
+    assert root.value == 10
+    assert root.left.value == 5
+    assert root.right.value == 15
+    assert root.left.left.value == 3
+    assert root.left.right.value == 7
+    assert root.right.right.value == 20
+    assert root.right.left.value == 13
 
 
-@pytest.mark.parametrize('key, idx', WORDS6IDX)
-def test_key_exists_if_bucket_length_is_one(key, idx, adt6_no_dups):
-    """Test key exists in bucket that contains only one key/value pair."""
-    assert adt6_no_dups.key_exists(key, idx)
+def test_empty_tree_depth(empty_t):
+    """Empty tree should return correct string message."""
+    assert empty_t.depth() == "Empty tree has no depth."
 
 
-<<<<<<< HEAD
-def test_key_exists_if_bucket_length_greater_than_one(adt6_no_dups):
-    """If bucket has more than one key/value pair it should return true
-    if key exists."""
-    adt6_no_dups.set_key('papel', 'hello there')
-    assert adt6_no_dups.key_exists('papel', 2)
+def test_tree_one_node_has_depth_zero(one_t):
+    """Tree with one node should have depth of zero."""
+    assert one_t.depth() == 0
 
-
-def test_key_not_string_raises_type_error(table6_add):
-    """Test set method raises error if key not a string."""
-    with pytest.raises(TypeError):
-        table6_add.set_key(1, 2)
-
-
-def test_key_already_exists_raises_key_error(table1key):
-    """If key exists, KeyError should raise."""
-    with pytest.raises(KeyError):
-        table1key.set_key('apple', 'yummy')
-
-def test_get_error_if_bucket_empty(table1key):
-    """Test get key returns error if mapped bucket is empty."""
-    with pytest.raises(KeyError):
-        # import pdb; pdb.set_trace()
-        table1key.get('a')
-
-def test_get_for_bucket_with_just_one_key_pair(table1key):
-    """If bucket contains just one key/balue pair get should work."""
-    table1key.set_key('banana', 'hello')
-    assert table1key.get('banana') == 'hello'
-
-def test_get_in_collision_bucket(table1key):
-    """If 2 key/pairs in bucket, get should retrieve correct pair."""
-    table1key.set_key('papel', 'hello')
-    assert table1key.get('papel') == 'hello'
-=======
 
 def test_tree_two_nodes_left_has_depth_one(one_t):
     """2 node tree with root child on left should have depth one."""
@@ -246,4 +179,3 @@ def test_tree_4_nodes_right_unbalanced_return_1(balanced_3_nodes):
 def test_tree_7_nodes_balanced_return_1(balanced_7_nodes):
     """Tree with 7 balanced nodes should return balance of 0."""
     assert balanced_7_nodes.balance() == 0
->>>>>>> c6508eb296c84c82aae470d888b55dafe388410f

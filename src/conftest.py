@@ -145,6 +145,48 @@ def cyclic():
 
 
 @pytest.fixture()
+def empty_t():
+    """Create empty tree."""
+    from bst import Tree
+    return Tree()
+
+
+@pytest.fixture()
+def one_t():
+    """Create tree with one node."""
+    from bst import Tree
+    t = Tree()
+    t.insert(10)
+    return t
+
+
+@pytest.fixture()
+def balanced_3_nodes():
+    """Create balanced tree with 3 nodes."""
+    from bst import Tree
+    t = Tree()
+    t.insert(10)
+    t.insert(5)
+    t.insert(15)
+    return t
+
+
+@pytest.fixture()
+def balanced_7_nodes():
+    """Create balanced tree with 3 nodes."""
+    from bst import Tree
+    t = Tree()
+    t.insert(10)
+    t.insert(5)
+    t.insert(15)
+    t.insert(20)
+    t.insert(13)
+    t.insert(3)
+    t.insert(7)
+    return t
+
+
+@pytest.fixture()
 def table6_add():
     """Initialize table with 6 buckets."""
     t = HashTable()
@@ -156,6 +198,7 @@ def table6_elf():
     """Initialize table with 6 buckets."""
     t = HashTable(hash_type='elf')
     return t
+
 
 @pytest.fixture()
 def table1key():
@@ -178,6 +221,7 @@ def words_list():
 
 @pytest.fixture()
 def adt6_no_dups():
+    """Full hash table with only one item in each bucket."""
     t = HashTable()
     t.set_key('aaaaaa', 'bettie')
     t.set_key('a', 'bettie')
@@ -186,4 +230,3 @@ def adt6_no_dups():
     t.set_key('spinach', 'james')
     t.set_key('sweet potato', 'jenny')
     return t
-
