@@ -2,6 +2,7 @@
 
 import pytest
 from hash import HashTable
+from trie import Trie
 
 
 @pytest.fixture
@@ -229,4 +230,18 @@ def adt6_no_dups():
     t.set_key('potato', 'fred')
     t.set_key('spinach', 'james')
     t.set_key('sweet potato', 'jenny')
+    return t
+
+
+@pytest.fixture
+def empty_trie():
+    """Create trie with root node."""
+    t = Trie()
+    return t
+
+
+@pytest.fixture
+def trie_3():
+    """Create trie with 3 words passed in iterable."""
+    t = Trie(['potato', 'potatoes', 'pot'])
     return t
