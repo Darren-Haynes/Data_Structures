@@ -19,6 +19,7 @@ class Trie(object):
         """Initiate Trie tree."""
         self.root = Node('*')
         self._size = 0
+
         if itr:
             if not isinstance(itr, (list, tuple, set)):
                 raise TypeError('Must use itterable of strings.')
@@ -30,7 +31,9 @@ class Trie(object):
         """Insert words into trie tree. Dubplicate will be ignored."""
         if not isinstance(string, str):
             raise TypeError('Input must be a string.')
+
         step = self.root
+
         for i in string:
             if i in step.children:
                 step = step.children[i]
@@ -38,6 +41,7 @@ class Trie(object):
                 step.children[i] = Node(i)
                 step.children[i].parent = step
                 step = step.children[i]
+
         step.end = True
         self._size += 1
 
@@ -46,15 +50,14 @@ class Trie(object):
         if not isinstance(string, str):
             raise TypeError('Must provide a string.')
         step = self.root
+
         for i in string:
             if i in step.children:
                 step = step.children[i]
             else:
                 return False
-        if step.end is True:
-            return True
-        else:
-            return False
+
+        return bool(step.end)
 
     def size(self):
         """Return number of words in trie tree."""
