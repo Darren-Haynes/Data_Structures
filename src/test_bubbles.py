@@ -1,17 +1,17 @@
 """Tests for the Binary Search Tree."""
 
-from bubble import bubble_sort
-import pytest
 import random
+import pytest
+from bubble import bubble_sort
 
 
 def random_100_lists():
     """Return 100 random lists."""
     lists = []
-    for i in range(100):
+    for _ in range(100):
         rand_len = random.randint(2, 100)
         temp_lst = []
-        for j in range(rand_len):
+        for _ in range(rand_len):
             temp_lst.append(random.randint(0, 1000))
         lists.append((temp_lst, sorted(temp_lst)))
     return lists
