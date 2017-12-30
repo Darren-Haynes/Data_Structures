@@ -28,7 +28,7 @@ class DoublyLinkedList(object):
         """Add a new node to the head of the list."""
         new_node = Node(val)
         if self._size == 0:
-            self.list_begins(new_node)
+            self._list_begins(new_node)
             return
         new_node.next = self.head
         self.head.prev = new_node
@@ -39,20 +39,20 @@ class DoublyLinkedList(object):
         """Add a new node to the tail."""
         new_node = Node(val)
         if self._size == 0:
-            self.list_begins(new_node)
+            self._list_begins(new_node)
             return
         new_node.prev = self.tail
         self.tail.next = new_node
         self.tail = new_node
         self._size += 1
 
-    def list_begins(self, node):
+    def _list_begins(self, node):
         """Function called by push and append to add to an empty list."""
         self.tail = node
         self.head = node
         self._size += 1
 
-    def pop_single_node(self):
+    def _pop_single_node(self):
         """Pop when there is only one node in the list."""
         single_node = self.head
         self.head = None
@@ -65,7 +65,7 @@ class DoublyLinkedList(object):
         if self._size == 0:
             raise IndexError("Empty list, nothing to pop")
         elif self._size == 1:
-            return self.pop_single_node()
+            return self._pop_single_node()
         the_head = self.head
         self.head = self.head.next
         self.head.prev = None
@@ -75,9 +75,9 @@ class DoublyLinkedList(object):
     def shift(self):
         """Take and return the node at the tail."""
         if self._size == 0:
-            raise IndexError("Empty list, nothing to pop")
+            raise IndexError("Empty list, nothing to shift")
         elif self._size == 1:
-            return self.pop_single_node()
+            return self._pop_single_node()
         the_tail = self.tail
         self.tail = self.tail.prev
         self.tail.next = None
