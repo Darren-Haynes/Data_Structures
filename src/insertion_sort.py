@@ -21,7 +21,7 @@ def insertion_sort(lst):
     return lst
 
 
-def timings():
+def timings():  # pragma: no cover
     """Generate timings report for insertion sort."""
     import_sort = 'from insertion_sort import insertion_sort'
     print("""
@@ -34,7 +34,7 @@ def timings():
     for i in range(3):
         lst_len = randint(9, 50)
         rand_lst = [i for i in range(lst_len)]
-        rand_lst[6], rand_lst[-1], rand_lst[-1], rand_lst[6]
+        rand_lst[6], rand_lst[-1] = rand_lst[-1], rand_lst[6]
         best_time = timeit('insertion_sort({})'.format(rand_lst), import_sort)
         print('List {}: length={}; time = {}'.format(i + 1, lst_len, best_time))
 
@@ -57,9 +57,5 @@ def timings():
         print('List {}: length={}; time = {}'.format(i + 1, lst_len, best_time))
 
 
-if __name__ == '__main__':
+if __name__ == '__main__':  # pragma: no cover
     timings()
-
-
-
-
