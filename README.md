@@ -139,7 +139,7 @@ Author: Darren Haynes
 <br />
 
 ##  Data Structure 10: Trie
-Author: Darren Haynes
+Author: Darren Haynes & [Kavdi Hodgson](https://github.com/kavdi "Kavdi Hodgson Github Profile Page")
 
 ### Big 0 Notation
 | Method | Big 0 | Description |
@@ -149,3 +149,13 @@ Author: Darren Haynes
 | ___contains()__ | `O(n)` | If the string is in the Trie, then worst case is `0(n)` since the whole string within the Trie is iterated over. |
 | ___size()__ | `O(1)` | The number of words in the Trie are kept track of when they are inserted and deleted. |
 | __remove()__ | `0(n^2` | To remove a string the Trie needs to be traversed to the end of the string, then each value popped back to the beginning of the string. |
+
+
+##  Data Structure 10: Bubble Sort
+Author: Darren Haynes & [Kavdi Hodgson](https://github.com/kavdi "Kavdi Hodgson Github Profile Page")
+
+### Big 0 Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __Sorting__ | `O(n^2)` | If the list to sort is completely unsorted then worst case scenario is `0(n^2)`. |
+
