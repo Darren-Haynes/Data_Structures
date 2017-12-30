@@ -9,7 +9,7 @@ from insertion_sort import insertion_sort
 def random_list():
     """Generate a random list for testing."""
     bunch_of_lists = []
-    for _ in range(1000):
+    for _ in range(100):
         lst_len = randint(1, 1000)
         rand_lst =  [randint(1, 1000) for _ in range(lst_len)]
         copy_lst = copy.deepcopy(rand_lst)
