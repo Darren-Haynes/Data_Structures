@@ -1,6 +1,6 @@
 """Implement merge sort algorithm."""
 
-from random import randint
+from random import randint, shuffle
 from timeit import timeit
 
 
