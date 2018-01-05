@@ -22,4 +22,4 @@ LISTS = random_list()
 @pytest.mark.parametrize('to_sort, pre_sorted', LISTS)
 def test_random_lists_always_sorted(to_sort, pre_sorted):
     """Test insertion sort works for 100 random lists."""
-    assert mergecat_sort(to_sort) == pre_sorted
+    assert merge_sort(to_sort) == pre_sorted
