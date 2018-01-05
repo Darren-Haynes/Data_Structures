@@ -1,9 +1,9 @@
-"""Test insertion sort."""
+"""Test merge sort."""
 
 from random import randint
 import copy
 import pytest
-from radix_sort import radix_sort
+from merge_sort import merge_sort
 
 
 def random_list():
@@ -22,4 +22,4 @@ LISTS = random_list()
 @pytest.mark.parametrize('to_sort, pre_sorted', LISTS)
 def test_random_lists_always_sorted(to_sort, pre_sorted):
     """Test insertion sort works for 100 random lists."""
-    assert radix_sort(to_sort) == pre_sorted
+    assert merge_sort(to_sort) == pre_sorted
