@@ -162,11 +162,22 @@ Author: Darren Haynes & [Kavdi Hodgson](https://github.com/kavdi "Kavdi Hodgson 
 
 <br />
 
-##  Data Structure 10: Insertion Sort
+##  Data Structure 11: Insertion Sort
 Author: Darren Haynes
 
 ### Big 0 Notation
 | Method | Big 0 | Description |
 |:---:|:---:| --- |
 | __Sorting__ | `O(n^2)` | If the list to sort is completely unsorted then worst case scenario is `0(n^2)`. |
+
+
+<br />
+
+##  Data Structure 12: Quick Sort
+Author: Darren Haynes
+
+### Big 0 Notation
+| Method | Big 0 | Description |
+|:---:|:---:| --- |
+| __Sorting__ | `O(n^2)` | Worst case scenario is `0(n^2)` and average case is `0(n log n). |
 
