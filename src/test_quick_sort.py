@@ -1,4 +1,4 @@
-"""Test insertion sort."""
+"""Test quick sort."""
 
 from random import randint
 import copy
