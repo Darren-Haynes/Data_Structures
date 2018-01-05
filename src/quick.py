@@ -42,7 +42,7 @@ def timings():  # pragma: no cover
     """Generate timings report for insertion sort."""
     import_sort = 'from quick import quick_sort'
     print("""
-    Timings for best, average and worst case scenarios for the merge sort.
+    Timings for best, average and worst case scenarios for the quick sort.
     --------------------------------------------------------------------------
 
     """)
