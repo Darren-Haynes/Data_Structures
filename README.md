@@ -162,7 +162,7 @@ Author: Darren Haynes & [Kavdi Hodgson](https://github.com/kavdi "Kavdi Hodgson 
 
 <br />
 
-##  Data Structure 11: Insertion Sort
+##  Data Structure 11: Quick Sort
 Author: Darren Haynes
 
 ### Big 0 Notation
@@ -173,11 +173,11 @@ Author: Darren Haynes
 
 <br />
 
-##  Data Structure 12: Quick Sort
-Author: Darren Haynes
+##  Data Structure 13: Radix Sort
+Author: Darren Haynes & [Kavdi Hodgson](https://github.com/kavdi "Kavdi Hodgson Github Profile Page")
 
 ### Big 0 Notation
 | Method | Big 0 | Description |
 |:---:|:---:| --- |
-| __Sorting__ | `O(n^2)` | Worst case scenario is `0(n^2)` and average case is `0(n log n). |
+| __Sorting__ | `O(kn)` | Worst case scenario = `0(n^2)`. |
 
