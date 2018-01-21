@@ -26,38 +26,34 @@ class Tree(object):
                 self.insert(num)
 
     def insert(self, value):
-        """Insert value to binary search tree."""
-        if not isinstance(value, (int, float)):
-            raise ValueError('Please insert number.')
-        # import pdb; pdb.set_trace()
-        if self.root is None:
+        """Insert value into the bst."""
+        if not self.root:
             self.root = Node(value)
             self._size += 1
             return
-        elif value == self.root.value:
-            raise ValueError('Node already exists.')
-        curr = self.root
-        while curr:
-            if value == curr.value:
-                    raise ValueError('Node already exists.')
-            elif value > curr.value:
-                if curr.right:
-                    curr = curr.right
-                else:
-                    curr.right = Node(value)
-                    curr.right.parent = curr
-                    self._size += 1
-                    self._balance(curr.right)
-                    break
-            elif value < curr.value:
-                if curr.left:
-                    curr = curr.left
-                else:
-                    curr.left = Node(value)
-                    curr.left.parent = curr
-                    self._size += 1
-                    self._balance(curr.left)
-                    break
+
+        return self._insert(value, self.root)
+
+    def _insert(self, value, node):
+        if value == node.value:
+            print("Value already exists")
+            return
+
+        if value < node.value:
+            if not node.left:
+                node.left = Node(value)
+                node.left.parent = node
+                self._size += 1
+                return
+            return self._insert(value, node.left)
+
+        if value > node.value:
+            if not node.right:
+                node.right = Node(value)
+                node.right.parent = node
+                self._size += 1
+                return
+            return self._insert(value, node.right)
 
     def size(self):
         """Return number of nodes in tree."""
