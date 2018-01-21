@@ -111,3 +111,6 @@ vimlog.txt
 
 # gitignore
 .gitignore
+
+#vscode
+.vscode
