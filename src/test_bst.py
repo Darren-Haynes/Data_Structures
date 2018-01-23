@@ -140,6 +140,12 @@ def test_balanced_tree_7_nodes_has_depth_two(balanced_7_nodes):
     assert balanced_7_nodes.depth() == 2
 
 
+def test_insert_if_node_value_exist(balanced_3_nodes):
+    """If node in tree insert should raise value error."""
+    with pytest.raises(ValueError):
+        balanced_3_nodes.insert(10)
+
+
 def test_empty_tree_contains(empty_t):
     """Empty tree contains should return appropriate string message."""
     empty_t.contains(1) == "An empty tree has no values."
