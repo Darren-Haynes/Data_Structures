@@ -10,7 +10,7 @@ setup(
     py_modules=[],
     install_requires=[],
     extras_require={
-        'testing': ['pytest', 'pytest-cov', 'pytest-watch', 'tox'],
+        'testing': ['pytest', 'pytest-cov', 'pytest-watch', 'tox', 'faker'],
         'development': ['ipython']
     },
     entry_points={

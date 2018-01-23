@@ -1,7 +1,8 @@
-"""Test fixtures for the binary search tree tests."""
+"""Test fixtures for the hash table tests."""
 
 import pytest
-from bst import Tree
+from hash import HashTable
+from trie import Trie
 
 
 @pytest.fixture
@@ -147,12 +148,14 @@ def cyclic():
 @pytest.fixture()
 def empty_t():
     """Create empty tree."""
+    from bst import Tree
     return Tree()
 
 
 @pytest.fixture()
 def one_t():
     """Create tree with one node."""
+    from bst import Tree
     t = Tree()
     t.insert(10)
     return t
@@ -161,6 +164,7 @@ def one_t():
 @pytest.fixture()
 def balanced_3_nodes():
     """Create balanced tree with 3 nodes."""
+    from bst import Tree
     t = Tree()
     t.insert(10)
     t.insert(5)
@@ -171,6 +175,7 @@ def balanced_3_nodes():
 @pytest.fixture()
 def balanced_7_nodes():
     """Create balanced tree with 3 nodes."""
+    from bst import Tree
     t = Tree()
     t.insert(10)
     t.insert(5)
@@ -179,4 +184,64 @@ def balanced_7_nodes():
     t.insert(13)
     t.insert(3)
     t.insert(7)
+    return t
+
+
+@pytest.fixture()
+def table6_add():
+    """Initialize table with 6 buckets."""
+    t = HashTable()
+    return t
+
+
+@pytest.fixture()
+def table6_elf():
+    """Initialize table with 6 buckets."""
+    t = HashTable(hash_type='elf')
+    return t
+
+
+@pytest.fixture()
+def table1key():
+    """Table with just 1 key/pair."""
+    t = HashTable()
+    t.set_key('apple', 'chapel')
+    return t
+
+
+@pytest.fixture()
+def words_list():
+    """Big ass list of dictionary words."""
+    words = []
+    with open('words.txt', 'r') as f:
+        for line in f:
+            words.append(line.strip())
+
+    return words
+
+
+@pytest.fixture()
+def adt6_no_dups():
+    """Full hash table with only one item in each bucket."""
+    t = HashTable()
+    t.set_key('aaaaaa', 'bettie')
+    t.set_key('a', 'bettie')
+    t.set_key('apple', 'bob')
+    t.set_key('potato', 'fred')
+    t.set_key('spinach', 'james')
+    t.set_key('sweet potato', 'jenny')
+    return t
+
+
+@pytest.fixture
+def empty_trie():
+    """Create trie with root node."""
+    t = Trie()
+    return t
+
+
+@pytest.fixture
+def trie_3():
+    """Create trie with 3 words passed in iterable."""
+    t = Trie(['potato', 'potatoes', 'pot'])
     return t
