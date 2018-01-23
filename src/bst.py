@@ -1,5 +1,6 @@
 """Binary Search Tree."""
 
+from queue import Queue
 from stack import Stack
 
 
@@ -35,9 +36,9 @@ class Tree(object):
         return self._insert(value, self.root)
 
     def _insert(self, value, node):
+        """Recursive part of 'insert' function."""
         if value == node.value:
-            print("Value already exists")
-            return
+            raise ValueError("Value already exists")
 
         if value < node.value:
             if not node.left:
@@ -78,12 +79,7 @@ class Tree(object):
         if not self.root:
             return "An empty tree has no values."
         else:
-            found = self._contains(self.root, value)
-
-        if found:
-            return True
-        else:
-            return False
+            return self._contains(self.root, value)
 
     def _contains(self, curr_node, value):
         """Recurse nodes to find value if it exists."""
@@ -104,6 +100,28 @@ class Tree(object):
             return self._depth(self.root.left, 0) \
                 - self._depth(self.root.right, 0)
         return self._depth(node.left, 0) - self._depth(node.right, 0)
+
+    def breadth(self):
+        """Breadth search of tree."""
+        if not self.root:
+            print("Tree is empty")
+
+        que = Queue()
+        que.enqueue(self.root)
+        # print(self.root.value)
+        yield self.root.value
+
+        while que:
+            node = que.dequeue()
+            if node.left:
+                # print(node.left.value)
+                yield node.left.value
+                que.enqueue(node.left)
+
+            if node.right:
+                # print(node.right.value)
+                yield node.right.value
+                que.enqueue(node.right)
 
     def in_order(self):
         """Traverse the bst and yield node values in order."""
