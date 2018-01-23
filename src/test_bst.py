@@ -2,6 +2,7 @@
 
 import pytest
 import random
+from bst import Tree
 
 def test_tree_initiates_with_empty_root(empty_t):
     """Tree instantiated without iterables should be empty."""
@@ -13,12 +14,28 @@ def test_empty_tree_size_is_zero(empty_t):
     assert empty_t.size() == 0
 
 
-# def test_tree_has_correct_size(empty_t):
-    # """Emtpy tree should have size of 0."""
-    # node_values = random.sample(range(1, 100), 50)
-    # for i, val in enumerate(node_values, 1):
-        # empty_t.insert(val)
-        # assert empty_t.size() == i
+def test_tuple_passed_as_iterable():
+    """Tuple passed as interable should populate the tree"""
+    tree = Tree((10, 5, 100))
+    assert tree.root.value == 10
+    assert tree.root.left.value == 5
+    assert tree.root.right.value == 100
+
+
+def test_list_passed_as_iterable():
+    """List passed as interable should populate the tree"""
+    tree = Tree([10, 5, 100])
+    assert tree.root.value == 10
+    assert tree.root.left.value == 5
+    assert tree.root.right.value == 100
+
+
+def test_set_passed_as_iterable():
+    """Set passed as interable should populate the tree"""
+    tree = Tree([10, 5, 100])
+    assert tree.root.value == 10
+    assert tree.root.left.value == 5
+    assert tree.root.right.value == 100
 
 
 def test_tree_with_one_node_root_exists(one_t):
@@ -121,6 +138,12 @@ def test_tree_with_one_leaf_node_left_of_right_depth(balanced_3_nodes):
 def test_balanced_tree_7_nodes_has_depth_two(balanced_7_nodes):
     """Balanced tree with 7 nodes depth should be 2."""
     assert balanced_7_nodes.depth() == 2
+
+
+def test_insert_if_node_value_exist(balanced_3_nodes):
+    """If node in tree insert should raise value error."""
+    with pytest.raises(ValueError):
+        balanced_3_nodes.insert(10)
 
 
 def test_empty_tree_contains(empty_t):

@@ -1,5 +1,6 @@
 """Binary Search Tree."""
 
+from queue import Queue
 from stack import Stack
 
 
@@ -26,38 +27,34 @@ class Tree(object):
                 self.insert(num)
 
     def insert(self, value):
-        """Insert value to binary search tree."""
-        if not isinstance(value, (int, float)):
-            raise ValueError('Please insert number.')
-        # import pdb; pdb.set_trace()
-        if self.root is None:
+        """Insert value into the bst."""
+        if not self.root:
             self.root = Node(value)
             self._size += 1
             return
-        elif value == self.root.value:
-            raise ValueError('Node already exists.')
-        curr = self.root
-        while curr:
-            if value == curr.value:
-                    raise ValueError('Node already exists.')
-            elif value > curr.value:
-                if curr.right:
-                    curr = curr.right
-                else:
-                    curr.right = Node(value)
-                    curr.right.parent = curr
-                    self._size += 1
-                    self._balance(curr.right)
-                    break
-            elif value < curr.value:
-                if curr.left:
-                    curr = curr.left
-                else:
-                    curr.left = Node(value)
-                    curr.left.parent = curr
-                    self._size += 1
-                    self._balance(curr.left)
-                    break
+
+        return self._insert(value, self.root)
+
+    def _insert(self, value, node):
+        """Recursive part of 'insert' function."""
+        if value == node.value:
+            raise ValueError("Value already exists")
+
+        if value < node.value:
+            if not node.left:
+                node.left = Node(value)
+                node.left.parent = node
+                self._size += 1
+                return
+            return self._insert(value, node.left)
+
+        if value > node.value:
+            if not node.right:
+                node.right = Node(value)
+                node.right.parent = node
+                self._size += 1
+                return
+            return self._insert(value, node.right)
 
     def size(self):
         """Return number of nodes in tree."""
@@ -82,12 +79,7 @@ class Tree(object):
         if not self.root:
             return "An empty tree has no values."
         else:
-            found = self._contains(self.root, value)
-
-        if found:
-            return True
-        else:
-            return False
+            return self._contains(self.root, value)
 
     def _contains(self, curr_node, value):
         """Recurse nodes to find value if it exists."""
@@ -108,6 +100,28 @@ class Tree(object):
             return self._depth(self.root.left, 0) \
                 - self._depth(self.root.right, 0)
         return self._depth(node.left, 0) - self._depth(node.right, 0)
+
+    def breadth(self):
+        """Breadth search of tree."""
+        if not self.root:
+            print("Tree is empty")
+
+        que = Queue()
+        que.enqueue(self.root)
+        # print(self.root.value)
+        yield self.root.value
+
+        while que:
+            node = que.dequeue()
+            if node.left:
+                # print(node.left.value)
+                yield node.left.value
+                que.enqueue(node.left)
+
+            if node.right:
+                # print(node.right.value)
+                yield node.right.value
+                que.enqueue(node.right)
 
     def in_order(self):
         """Traverse the bst and yield node values in order."""
