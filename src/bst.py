@@ -201,6 +201,44 @@ class Tree(object):
             else:
                 node = node.parent
 
+    def nearest_value(self, value):
+        """Return value in tree nearest input value."""
+        return self._nearest_value(self.root, value)
+
+
+    def _nearest_value(self, node, value):
+        """Recursive extenstion of 'nearest_value' method."""
+        if value == node.value:
+            return value
+
+        if value < node.value:
+            if not node.left:
+                return node.value
+            if value > node.left.value:
+                return self._closest_value(
+                    node.value, node.left.value, value)
+            else:
+                return self._nearest_value(node.left, value)
+
+        if value > node.value:
+            if not node.right:
+                return node.value
+            if value < node.right.value:
+                return self._closest_value(
+                    node.value, node.right.value, value)
+            else:
+                return self._nearest_value(node.right, value)
+
+    def _closest_value(self, val1, val2, input_val):
+        """Use abs val to determine closest value to input val."""
+        if abs(val1 - input_val) == abs(val2 - input_val):
+            return val1, val2
+
+        if abs(val1 - input_val) < abs(val2 - input_val):
+            return val1
+        else:
+            return val2
+
     def create_balanced_7_node(self):  # pragma: no cover
         """Create blanced tree with 7 nodes."""
         self.insert(10)
